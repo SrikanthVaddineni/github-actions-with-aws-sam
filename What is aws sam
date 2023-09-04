@@ -1,0 +1,4163 @@
+The AWS SAM CLI is a command line tool that you can use with AWS SAM templates and supported third-party integrations to build and run your serverless applications. Use the AWS SAM CLI to
+
+
+1.Quickly initialize a new application project.
+2.Build your application for deployment.
+3.Perform local debugging and testing.
+4.Deploy your application.
+5.Configure CI/CD deployment pipelines.
+6.Monitor and troubleshoot your application in the cloud.
+7.Sync local changes to the cloud as you develop.
+8. And Many More .
+
+The AWS SAM CLI is best utilized when used with AWS SAM and AWS CloudFormation templates. It also works with third-party products such as Terraform.
+
+Initialize a new project
+Here, we use the sam init command to initialize a new application project. We select the Hello World Example project to start with. The AWS SAM CLI downloads a starter template and creates our project folder directory structure.
+PS C:\Users\H P> sam init
+
+You can preselect a particular runtime or package type when using the `sam init` experience.
+Call `sam init --help` to learn more.
+
+Which template source would you like to use?
+        1 - AWS Quick Start Templates
+        2 - Custom Template Location
+Choice: 1
+
+Choose an AWS Quick Start application template
+        1 - Hello World Example
+        2 - Data processing
+        3 - Hello World Example with Powertools for AWS Lambda
+        4 - Multi-step workflow
+        5 - Scheduled task
+        6 - Standalone function
+        7 - Serverless API
+        8 - Infrastructure event management
+        9 - Lambda Response Streaming
+        10 - Serverless Connector Hello World Example
+        11 - Multi-step workflow with Connectors
+        12 - GraphQLApi Hello World Example
+        13 - Full Stack
+        14 - Lambda EFS example
+        15 - Hello World Example With Powertools for AWS Lambda
+        16 - DynamoDB Example
+        17 - Machine Learning
+Template: 1
+
+Use the most popular runtime and package type? (Python and zip) [y/N]: y
+
+Would you like to enable X-Ray tracing on the function(s) in your application?  [y/N]: y
+X-Ray will incur an additional cost. View https://aws.amazon.com/xray/pricing/ for more details
+
+Would you like to enable monitoring using CloudWatch Application Insights?
+For more info, please view https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch-application-insights.html [y/N]: y
+AppInsights monitoring may incur additional cost. View https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/appinsights-what-is.html#appinsights-pricing for more details
+
+Project name [sam-app]: demoone
+
+    -----------------------
+    Generating application:
+    -----------------------
+    Name: demoone
+    Runtime: python3.9
+    Architectures: x86_64
+    Dependency Manager: pip
+    Application Template: hello-world
+    Output Directory: .
+    Configuration file: demoone\samconfig.toml
+
+    Next steps can be found in the README file at demoone\README.md
+Commands you can use next
+=========================
+[*] Create pipeline: cd demoone && sam pipeline init --bootstrap
+[*] Validate SAM template: cd demoone && sam validate
+[*] Test Function in the Cloud: cd demoone && sam sync --stack-name {stack-name} --watch
+
+PS C:\Users\H P> tree
+Folder PATH listing for volume Windows
+Volume serial number is 366B-9018
+C:.
+├───.aws
+├───.cache
+│   ├───selenium
+│   │   └───chromedriver
+│   │       └───win32
+│   │           ├───108.0.5359.71
+│   │           ├───109.0.5414.74
+│   │           ├───110.0.5481.77
+│   │           └───111.0.5563.64
+│   └───tooling
+│       └───gradle
+├───.conda
+├───.continuum
+│   └───anaconda-client
+├───.cookiecutter_replay
+├───.eclipse
+│   ├───org.eclipse.oomph.jreinfo
+│   ├───org.eclipse.oomph.p2
+│   │   ├───cache
+│   │   └───trust
+│   ├───org.eclipse.oomph.setup
+│   │   ├───cache
+│   │   └───setups
+│   ├───org.eclipse.oomph.setup.installer
+│   └───org.eclipse.tips.state
+│       └───org.eclipse.tips.ide.state
+├───.idlerc
+│   └───Java Testing
+│       └───old files
+├───.ipynb_checkpoints
+├───.ipython
+│   ├───extensions
+│   ├───nbextensions
+│   └───profile_default
+│       ├───db
+│       ├───log
+│       ├───pid
+│       ├───security
+│       └───startup
+├───.jupyter
+│   └───lab
+│       └───workspaces
+├───.redhat
+├───.VirtualBox
+├───.vscode
+│   ├───cli
+│   ├───extensions
+│   │   ├───amazonwebservices.aws-toolkit-vscode-1.87.0
+│   │   │   ├───dist
+│   │   │   │   ├───libs
+│   │   │   │   └───src
+│   │   │   │       ├───apigateway
+│   │   │   │       │   └───vue
+│   │   │   │       ├───auth
+│   │   │   │       │   └───ui
+│   │   │   │       │       └───vue
+│   │   │   │       ├───codecatalyst
+│   │   │   │       │   └───vue
+│   │   │   │       │       ├───configure
+│   │   │   │       │       └───create
+│   │   │   │       ├───eventSchemas
+│   │   │   │       │   └───vue
+│   │   │   │       ├───feedback
+│   │   │   │       │   └───vue
+│   │   │   │       ├───lambda
+│   │   │   │       │   └───vue
+│   │   │   │       │       ├───configEditor
+│   │   │   │       │       └───remoteInvoke
+│   │   │   │       ├───ssmDocument
+│   │   │   │       │   └───ssm
+│   │   │   │       ├───stepFunctions
+│   │   │   │       │   ├───asl
+│   │   │   │       │   └───vue
+│   │   │   │       │       └───executeStateMachine
+│   │   │   │       ├───templates
+│   │   │   │       └───testBrowser
+│   │   │   ├───resources
+│   │   │   │   ├───css
+│   │   │   │   ├───debugger
+│   │   │   │   ├───fonts
+│   │   │   │   ├───icons
+│   │   │   │   │   ├───aws
+│   │   │   │   │   │   ├───apprunner
+│   │   │   │   │   │   ├───cdk
+│   │   │   │   │   │   ├───cloudformation
+│   │   │   │   │   │   ├───cloudwatch
+│   │   │   │   │   │   ├───codecatalyst
+│   │   │   │   │   │   ├───ecr
+│   │   │   │   │   │   ├───ecs
+│   │   │   │   │   │   ├───generic
+│   │   │   │   │   │   ├───iot
+│   │   │   │   │   │   ├───lambda
+│   │   │   │   │   │   ├───s3
+│   │   │   │   │   │   ├───schemas
+│   │   │   │   │   │   └───stepfunctions
+│   │   │   │   │   ├───cloud9
+│   │   │   │   │   │   ├───dark
+│   │   │   │   │   │   ├───generated
+│   │   │   │   │   │   │   ├───dark
+│   │   │   │   │   │   │   └───light
+│   │   │   │   │   │   └───light
+│   │   │   │   │   └───vscode
+│   │   │   │   │       ├───codicons
+│   │   │   │   │       ├───dark
+│   │   │   │   │       └───light
+│   │   │   │   ├───js
+│   │   │   │   ├───markdown
+│   │   │   │   ├───marketplace
+│   │   │   │   │   └───cloud9
+│   │   │   │   └───walkthrough
+│   │   │   │       └───images
+│   │   │   ├───syntaxes
+│   │   │   ├───templates
+│   │   │   └───types
+│   │   ├───ecmel.vscode-html-css-1.13.1
+│   │   │   └───dist
+│   │   ├───formulahendry.code-runner-0.12.0
+│   │   │   ├───.github
+│   │   │   │   ├───ISSUE_TEMPLATE
+│   │   │   │   └───workflows
+│   │   │   ├───images
+│   │   │   ├───node_modules
+│   │   │   │   ├───applicationinsights
+│   │   │   │   │   ├───AutoCollection
+│   │   │   │   │   ├───Library
+│   │   │   │   │   ├───Schema
+│   │   │   │   │   │   └───PublicSchema
+│   │   │   │   │   └───typings
+│   │   │   │   │       └───globals
+│   │   │   │   │           ├───mocha
+│   │   │   │   │           ├───node
+│   │   │   │   │           └───sinon
+│   │   │   │   ├───braces
+│   │   │   │   │   └───lib
+│   │   │   │   ├───fill-range
+│   │   │   │   ├───is-number
+│   │   │   │   ├───micromatch
+│   │   │   │   ├───picomatch
+│   │   │   │   │   └───lib
+│   │   │   │   ├───to-regex-range
+│   │   │   │   ├───tree-kill
+│   │   │   │   └───zone.js
+│   │   │   │       ├───dist
+│   │   │   │       └───lib
+│   │   │   │           ├───browser
+│   │   │   │           ├───common
+│   │   │   │           ├───jasmine
+│   │   │   │           ├───mocha
+│   │   │   │           ├───node
+│   │   │   │           └───zone-spec
+│   │   │   ├───out
+│   │   │   │   └───src
+│   │   │   └───syntaxes
+│   │   ├───github.vscode-github-actions-0.26.1
+│   │   │   ├───.github
+│   │   │   │   ├───ISSUE_TEMPLATE
+│   │   │   │   └───workflows
+│   │   │   ├───dist
+│   │   │   ├───docs
+│   │   │   │   └───images
+│   │   │   ├───language
+│   │   │   │   └───syntaxes
+│   │   │   ├───resources
+│   │   │   │   └───icons
+│   │   │   │       ├───dark
+│   │   │   │       │   ├───steps
+│   │   │   │       │   └───workflowruns
+│   │   │   │       └───light
+│   │   │   │           ├───steps
+│   │   │   │           └───workflowruns
+│   │   │   └───script
+│   │   │       ├───workflows
+│   │   │       └───workspace
+│   │   ├───ms-dotnettools.vscode-dotnet-runtime-1.7.2
+│   │   │   ├───dist
+│   │   │   │   └───install scripts
+│   │   │   └───images
+│   │   ├───ms-python.isort-2023.10.1
+│   │   │   ├───bundled
+│   │   │   │   ├───libs
+│   │   │   │   │   ├───attr
+│   │   │   │   │   │   └───__pycache__
+│   │   │   │   │   ├───attrs
+│   │   │   │   │   │   └───__pycache__
+│   │   │   │   │   ├───attrs-23.1.0.dist-info
+│   │   │   │   │   │   └───licenses
+│   │   │   │   │   ├───cattr
+│   │   │   │   │   │   └───preconf
+│   │   │   │   │   ├───cattrs
+│   │   │   │   │   │   ├───gen
+│   │   │   │   │   │   │   └───__pycache__
+│   │   │   │   │   │   ├───preconf
+│   │   │   │   │   │   ├───strategies
+│   │   │   │   │   │   └───__pycache__
+│   │   │   │   │   ├───cattrs-23.1.2.dist-info
+│   │   │   │   │   ├───exceptiongroup
+│   │   │   │   │   ├───exceptiongroup-1.1.2.dist-info
+│   │   │   │   │   ├───importlib_metadata
+│   │   │   │   │   ├───importlib_metadata-6.7.0.dist-info
+│   │   │   │   │   ├───isort
+│   │   │   │   │   │   ├───deprecated
+│   │   │   │   │   │   ├───stdlibs
+│   │   │   │   │   │   │   └───__pycache__
+│   │   │   │   │   │   ├───_future
+│   │   │   │   │   │   │   └───__pycache__
+│   │   │   │   │   │   ├───_vendored
+│   │   │   │   │   │   │   └───tomli
+│   │   │   │   │   │   │       └───__pycache__
+│   │   │   │   │   │   └───__pycache__
+│   │   │   │   │   ├───isort-5.11.5.dist-info
+│   │   │   │   │   ├───lsprotocol
+│   │   │   │   │   │   └───__pycache__
+│   │   │   │   │   ├───lsprotocol-2023.0.0a2.dist-info
+│   │   │   │   │   ├───packaging
+│   │   │   │   │   │   └───__pycache__
+│   │   │   │   │   ├───packaging-23.1.dist-info
+│   │   │   │   │   ├───pygls
+│   │   │   │   │   │   ├───lsp
+│   │   │   │   │   │   │   └───__pycache__
+│   │   │   │   │   │   └───__pycache__
+│   │   │   │   │   ├───pygls-1.0.2.dist-info
+│   │   │   │   │   ├───typeguard
+│   │   │   │   │   │   └───__pycache__
+│   │   │   │   │   ├───typeguard-3.0.2.dist-info
+│   │   │   │   │   ├───typing_extensions-4.7.1.dist-info
+│   │   │   │   │   ├───zipp
+│   │   │   │   │   ├───zipp-3.15.0.dist-info
+│   │   │   │   │   └───__pycache__
+│   │   │   │   └───tool
+│   │   │   │       └───__pycache__
+│   │   │   ├───dist
+│   │   │   ├───images
+│   │   │   └───l10n
+│   │   ├───ms-python.python-2023.14.0
+│   │   │   ├───.devcontainer
+│   │   │   ├───dist
+│   │   │   ├───images
+│   │   │   ├───l10n
+│   │   │   ├───languages
+│   │   │   ├───out
+│   │   │   │   └───client
+│   │   │   │       └───node_modules
+│   │   │   │           └───unicode
+│   │   │   │               └───category
+│   │   │   ├───pythonExtensionApi
+│   │   │   │   └───src
+│   │   │   ├───pythonFiles
+│   │   │   │   ├───.vscode
+│   │   │   │   ├───lib
+│   │   │   │   │   ├───jedilsp
+│   │   │   │   │   │   ├───attr
+│   │   │   │   │   │   ├───attrs
+│   │   │   │   │   │   ├───attrs-22.2.0.dist-info
+│   │   │   │   │   │   ├───bin
+│   │   │   │   │   │   ├───cattr
+│   │   │   │   │   │   │   └───preconf
+│   │   │   │   │   │   ├───cattrs
+│   │   │   │   │   │   │   └───preconf
+│   │   │   │   │   │   ├───cattrs-22.2.0.dist-info
+│   │   │   │   │   │   ├───docstring_to_markdown
+│   │   │   │   │   │   ├───docstring_to_markdown-0.11.dist-info
+│   │   │   │   │   │   ├───exceptiongroup
+│   │   │   │   │   │   ├───exceptiongroup-1.1.0.dist-info
+│   │   │   │   │   │   ├───importlib_metadata
+│   │   │   │   │   │   ├───importlib_metadata-3.10.1.dist-info
+│   │   │   │   │   │   ├───jedi
+│   │   │   │   │   │   │   ├───api
+│   │   │   │   │   │   │   │   └───refactoring
+│   │   │   │   │   │   │   ├───inference
+│   │   │   │   │   │   │   │   ├───compiled
+│   │   │   │   │   │   │   │   │   └───subprocess
+│   │   │   │   │   │   │   │   ├───gradual
+│   │   │   │   │   │   │   │   └───value
+│   │   │   │   │   │   │   ├───plugins
+│   │   │   │   │   │   │   └───third_party
+│   │   │   │   │   │   │       ├───django-stubs
+│   │   │   │   │   │   │       │   └───django-stubs
+│   │   │   │   │   │   │       │       ├───apps
+│   │   │   │   │   │   │       │       ├───conf
+│   │   │   │   │   │   │       │       │   ├───locale
+│   │   │   │   │   │   │       │       │   └───urls
+│   │   │   │   │   │   │       │       ├───contrib
+│   │   │   │   │   │   │       │       │   ├───admin
+│   │   │   │   │   │   │       │       │   │   ├───templatetags
+│   │   │   │   │   │   │       │       │   │   └───views
+│   │   │   │   │   │   │       │       │   ├───admindocs
+│   │   │   │   │   │   │       │       │   ├───auth
+│   │   │   │   │   │   │       │       │   │   ├───handlers
+│   │   │   │   │   │   │       │       │   │   └───management
+│   │   │   │   │   │   │       │       │   │       └───commands
+│   │   │   │   │   │   │       │       │   ├───contenttypes
+│   │   │   │   │   │   │       │       │   │   └───management
+│   │   │   │   │   │   │       │       │   │       └───commands
+│   │   │   │   │   │   │       │       │   ├───flatpages
+│   │   │   │   │   │   │       │       │   │   └───templatetags
+│   │   │   │   │   │   │       │       │   ├───gis
+│   │   │   │   │   │   │       │       │   │   └───db
+│   │   │   │   │   │   │       │       │   │       └───models
+│   │   │   │   │   │   │       │       │   ├───humanize
+│   │   │   │   │   │   │       │       │   │   └───templatetags
+│   │   │   │   │   │   │       │       │   ├───messages
+│   │   │   │   │   │   │       │       │   │   └───storage
+│   │   │   │   │   │   │       │       │   ├───postgres
+│   │   │   │   │   │   │       │       │   │   ├───aggregates
+│   │   │   │   │   │   │       │       │   │   └───fields
+│   │   │   │   │   │   │       │       │   ├───redirects
+│   │   │   │   │   │   │       │       │   ├───sessions
+│   │   │   │   │   │   │       │       │   │   ├───backends
+│   │   │   │   │   │   │       │       │   │   └───management
+│   │   │   │   │   │   │       │       │   │       └───commands
+│   │   │   │   │   │   │       │       │   ├───sitemaps
+│   │   │   │   │   │   │       │       │   │   └───management
+│   │   │   │   │   │   │       │       │   │       └───commands
+│   │   │   │   │   │   │       │       │   ├───sites
+│   │   │   │   │   │   │       │       │   ├───staticfiles
+│   │   │   │   │   │   │       │       │   │   ├───management
+│   │   │   │   │   │   │       │       │   │   │   └───commands
+│   │   │   │   │   │   │       │       │   │   └───templatetags
+│   │   │   │   │   │   │       │       │   └───syndication
+│   │   │   │   │   │   │       │       ├───core
+│   │   │   │   │   │   │       │       │   ├───cache
+│   │   │   │   │   │   │       │       │   │   └───backends
+│   │   │   │   │   │   │       │       │   ├───checks
+│   │   │   │   │   │   │       │       │   │   └───security
+│   │   │   │   │   │   │       │       │   ├───files
+│   │   │   │   │   │   │       │       │   ├───handlers
+│   │   │   │   │   │   │       │       │   ├───mail
+│   │   │   │   │   │   │       │       │   │   └───backends
+│   │   │   │   │   │   │       │       │   ├───management
+│   │   │   │   │   │   │       │       │   │   └───commands
+│   │   │   │   │   │   │       │       │   ├───serializers
+│   │   │   │   │   │   │       │       │   └───servers
+│   │   │   │   │   │   │       │       ├───db
+│   │   │   │   │   │   │       │       │   ├───backends
+│   │   │   │   │   │   │       │       │   │   ├───base
+│   │   │   │   │   │   │       │       │   │   ├───dummy
+│   │   │   │   │   │   │       │       │   │   ├───mysql
+│   │   │   │   │   │   │       │       │   │   ├───postgresql
+│   │   │   │   │   │   │       │       │   │   └───sqlite3
+│   │   │   │   │   │   │       │       │   ├───migrations
+│   │   │   │   │   │   │       │       │   │   └───operations
+│   │   │   │   │   │   │       │       │   └───models
+│   │   │   │   │   │   │       │       │       ├───fields
+│   │   │   │   │   │   │       │       │       ├───functions
+│   │   │   │   │   │   │       │       │       └───sql
+│   │   │   │   │   │   │       │       ├───dispatch
+│   │   │   │   │   │   │       │       ├───forms
+│   │   │   │   │   │   │       │       ├───http
+│   │   │   │   │   │   │       │       ├───middleware
+│   │   │   │   │   │   │       │       ├───template
+│   │   │   │   │   │   │       │       │   ├───backends
+│   │   │   │   │   │   │       │       │   └───loaders
+│   │   │   │   │   │   │       │       ├───templatetags
+│   │   │   │   │   │   │       │       ├───test
+│   │   │   │   │   │   │       │       ├───urls
+│   │   │   │   │   │   │       │       ├───utils
+│   │   │   │   │   │   │       │       │   └───translation
+│   │   │   │   │   │   │       │       └───views
+│   │   │   │   │   │   │       │           ├───decorators
+│   │   │   │   │   │   │       │           └───generic
+│   │   │   │   │   │   │       └───typeshed
+│   │   │   │   │   │   │           ├───stdlib
+│   │   │   │   │   │   │           │   ├───2
+│   │   │   │   │   │   │           │   │   ├───distutils
+│   │   │   │   │   │   │           │   │   │   └───command
+│   │   │   │   │   │   │           │   │   ├───email
+│   │   │   │   │   │   │           │   │   │   └───mime
+│   │   │   │   │   │   │           │   │   ├───encodings
+│   │   │   │   │   │   │           │   │   ├───multiprocessing
+│   │   │   │   │   │   │           │   │   │   └───dummy
+│   │   │   │   │   │   │           │   │   └───os
+│   │   │   │   │   │   │           │   ├───2and3
+│   │   │   │   │   │   │           │   │   ├───ctypes
+│   │   │   │   │   │   │           │   │   ├───curses
+│   │   │   │   │   │   │           │   │   ├───ensurepip
+│   │   │   │   │   │   │           │   │   ├───lib2to3
+│   │   │   │   │   │   │           │   │   │   └───pgen2
+│   │   │   │   │   │   │           │   │   ├───logging
+│   │   │   │   │   │   │           │   │   ├───msilib
+│   │   │   │   │   │   │           │   │   ├───pydoc_data
+│   │   │   │   │   │   │           │   │   ├───pyexpat
+│   │   │   │   │   │   │           │   │   ├───sqlite3
+│   │   │   │   │   │   │           │   │   ├───wsgiref
+│   │   │   │   │   │   │           │   │   ├───xml
+│   │   │   │   │   │   │           │   │   │   ├───dom
+│   │   │   │   │   │   │           │   │   │   ├───etree
+│   │   │   │   │   │   │           │   │   │   ├───parsers
+│   │   │   │   │   │   │           │   │   │   │   └───expat
+│   │   │   │   │   │   │           │   │   │   └───sax
+│   │   │   │   │   │   │           │   │   └───_typeshed
+│   │   │   │   │   │   │           │   ├───3
+│   │   │   │   │   │   │           │   │   ├───asyncio
+│   │   │   │   │   │   │           │   │   ├───collections
+│   │   │   │   │   │   │           │   │   ├───concurrent
+│   │   │   │   │   │   │           │   │   │   └───futures
+│   │   │   │   │   │   │           │   │   ├───dbm
+│   │   │   │   │   │   │           │   │   ├───distutils
+│   │   │   │   │   │   │           │   │   │   └───command
+│   │   │   │   │   │   │           │   │   ├───email
+│   │   │   │   │   │   │           │   │   │   └───mime
+│   │   │   │   │   │   │           │   │   ├───encodings
+│   │   │   │   │   │   │           │   │   ├───html
+│   │   │   │   │   │   │           │   │   ├───http
+│   │   │   │   │   │   │           │   │   ├───importlib
+│   │   │   │   │   │   │           │   │   ├───json
+│   │   │   │   │   │   │           │   │   ├───multiprocessing
+│   │   │   │   │   │   │           │   │   │   └───dummy
+│   │   │   │   │   │   │           │   │   ├───os
+│   │   │   │   │   │   │           │   │   ├───tkinter
+│   │   │   │   │   │   │           │   │   ├───unittest
+│   │   │   │   │   │   │           │   │   ├───urllib
+│   │   │   │   │   │   │           │   │   ├───venv
+│   │   │   │   │   │   │           │   │   └───xmlrpc
+│   │   │   │   │   │   │           │   ├───3.7
+│   │   │   │   │   │   │           │   └───3.9
+│   │   │   │   │   │   │           │       └───zoneinfo
+│   │   │   │   │   │   │           └───third_party
+│   │   │   │   │   │   │               ├───2
+│   │   │   │   │   │   │               │   ├───concurrent
+│   │   │   │   │   │   │               │   │   └───futures
+│   │   │   │   │   │   │               │   ├───fb303
+│   │   │   │   │   │   │               │   ├───kazoo
+│   │   │   │   │   │   │               │   │   └───recipe
+│   │   │   │   │   │   │               │   ├───OpenSSL
+│   │   │   │   │   │   │               │   ├───routes
+│   │   │   │   │   │   │               │   ├───scribe
+│   │   │   │   │   │   │               │   ├───six
+│   │   │   │   │   │   │               │   │   └───moves
+│   │   │   │   │   │   │               │   │       └───urllib
+│   │   │   │   │   │   │               │   └───tornado
+│   │   │   │   │   │   │               ├───2and3
+│   │   │   │   │   │   │               │   ├───atomicwrites
+│   │   │   │   │   │   │               │   ├───attr
+│   │   │   │   │   │   │               │   ├───backports
+│   │   │   │   │   │   │               │   ├───bleach
+│   │   │   │   │   │   │               │   ├───boto
+│   │   │   │   │   │   │               │   │   ├───ec2
+│   │   │   │   │   │   │               │   │   ├───elb
+│   │   │   │   │   │   │               │   │   ├───kms
+│   │   │   │   │   │   │               │   │   └───s3
+│   │   │   │   │   │   │               │   ├───cachetools
+│   │   │   │   │   │   │               │   ├───characteristic
+│   │   │   │   │   │   │               │   ├───chardet
+│   │   │   │   │   │   │               │   ├───click
+│   │   │   │   │   │   │               │   ├───cryptography
+│   │   │   │   │   │   │               │   │   ├───hazmat
+│   │   │   │   │   │   │               │   │   │   ├───backends
+│   │   │   │   │   │   │               │   │   │   ├───bindings
+│   │   │   │   │   │   │               │   │   │   │   └───openssl
+│   │   │   │   │   │   │               │   │   │   └───primitives
+│   │   │   │   │   │   │               │   │   │       ├───asymmetric
+│   │   │   │   │   │   │               │   │   │       ├───ciphers
+│   │   │   │   │   │   │               │   │   │       ├───kdf
+│   │   │   │   │   │   │               │   │   │       ├───serialization
+│   │   │   │   │   │   │               │   │   │       └───twofactor
+│   │   │   │   │   │   │               │   │   └───x509
+│   │   │   │   │   │   │               │   ├───datetimerange
+│   │   │   │   │   │   │               │   ├───dateutil
+│   │   │   │   │   │   │               │   │   └───tz
+│   │   │   │   │   │   │               │   ├───deprecated
+│   │   │   │   │   │   │               │   ├───emoji
+│   │   │   │   │   │   │               │   ├───flask
+│   │   │   │   │   │   │               │   │   └───json
+│   │   │   │   │   │   │               │   ├───geoip2
+│   │   │   │   │   │   │               │   ├───google
+│   │   │   │   │   │   │               │   │   └───protobuf
+│   │   │   │   │   │   │               │   │       ├───compiler
+│   │   │   │   │   │   │               │   │       ├───internal
+│   │   │   │   │   │   │               │   │       └───util
+│   │   │   │   │   │   │               │   ├───jinja2
+│   │   │   │   │   │   │               │   ├───markdown
+│   │   │   │   │   │   │               │   │   └───extensions
+│   │   │   │   │   │   │               │   ├───markupsafe
+│   │   │   │   │   │   │               │   ├───maxminddb
+│   │   │   │   │   │   │               │   ├───nmap
+│   │   │   │   │   │   │               │   ├───paramiko
+│   │   │   │   │   │   │               │   ├───pymysql
+│   │   │   │   │   │   │               │   │   └───constants
+│   │   │   │   │   │   │               │   ├───pynamodb
+│   │   │   │   │   │   │               │   │   └───connection
+│   │   │   │   │   │   │               │   ├───pytz
+│   │   │   │   │   │   │               │   ├───pyVmomi
+│   │   │   │   │   │   │               │   │   ├───vim
+│   │   │   │   │   │   │               │   │   └───vmodl
+│   │   │   │   │   │   │               │   ├───redis
+│   │   │   │   │   │   │               │   ├───requests
+│   │   │   │   │   │   │               │   │   └───packages
+│   │   │   │   │   │   │               │   │       └───urllib3
+│   │   │   │   │   │   │               │   │           ├───contrib
+│   │   │   │   │   │   │               │   │           ├───packages
+│   │   │   │   │   │   │               │   │           │   └───ssl_match_hostname
+│   │   │   │   │   │   │               │   │           └───util
+│   │   │   │   │   │   │               │   ├───retry
+│   │   │   │   │   │   │               │   ├───simplejson
+│   │   │   │   │   │   │               │   ├───slugify
+│   │   │   │   │   │   │               │   ├───tzlocal
+│   │   │   │   │   │   │               │   ├───werkzeug
+│   │   │   │   │   │   │               │   │   ├───contrib
+│   │   │   │   │   │   │               │   │   ├───debug
+│   │   │   │   │   │   │               │   │   └───middleware
+│   │   │   │   │   │   │               │   └───yaml
+│   │   │   │   │   │   │               └───3
+│   │   │   │   │   │   │                   ├───aiofiles
+│   │   │   │   │   │   │                   │   └───threadpool
+│   │   │   │   │   │   │                   ├───docutils
+│   │   │   │   │   │   │                   │   └───parsers
+│   │   │   │   │   │   │                   │       └───rst
+│   │   │   │   │   │   │                   ├───filelock
+│   │   │   │   │   │   │                   ├───freezegun
+│   │   │   │   │   │   │                   ├───jwt
+│   │   │   │   │   │   │                   │   └───contrib
+│   │   │   │   │   │   │                   │       └───algorithms
+│   │   │   │   │   │   │                   ├───pkg_resources
+│   │   │   │   │   │   │                   ├───pyrfc3339
+│   │   │   │   │   │   │                   ├───six
+│   │   │   │   │   │   │                   │   └───moves
+│   │   │   │   │   │   │                   │       └───urllib
+│   │   │   │   │   │   │                   ├───typed_ast
+│   │   │   │   │   │   │                   └───waitress
+│   │   │   │   │   │   ├───jedi-0.18.2.dist-info
+│   │   │   │   │   │   ├───jedi_language_server
+│   │   │   │   │   │   ├───jedi_language_server-0.40.0.dist-info
+│   │   │   │   │   │   ├───lsprotocol
+│   │   │   │   │   │   ├───lsprotocol-2022.0.0a10.dist-info
+│   │   │   │   │   │   ├───parso
+│   │   │   │   │   │   │   ├───pgen2
+│   │   │   │   │   │   │   └───python
+│   │   │   │   │   │   ├───parso-0.8.3.dist-info
+│   │   │   │   │   │   ├───pydantic
+│   │   │   │   │   │   ├───pydantic-1.10.4.dist-info
+│   │   │   │   │   │   ├───pygls
+│   │   │   │   │   │   │   └───lsp
+│   │   │   │   │   │   ├───pygls-1.0.0.dist-info
+│   │   │   │   │   │   ├───typeguard
+│   │   │   │   │   │   ├───typeguard-2.13.3.dist-info
+│   │   │   │   │   │   ├───typing_extensions-4.4.0.dist-info
+│   │   │   │   │   │   ├───zipp
+│   │   │   │   │   │   └───zipp-3.12.0.dist-info
+│   │   │   │   │   └───python
+│   │   │   │   │       ├───debugpy
+│   │   │   │   │       │   ├───adapter
+│   │   │   │   │       │   ├───common
+│   │   │   │   │       │   ├───launcher
+│   │   │   │   │       │   ├───server
+│   │   │   │   │       │   └───_vendored
+│   │   │   │   │       │       └───pydevd
+│   │   │   │   │       │           ├───pydevd_attach_to_process
+│   │   │   │   │       │           │   ├───common
+│   │   │   │   │       │           │   ├───linux_and_mac
+│   │   │   │   │       │           │   ├───winappdbg
+│   │   │   │   │       │           │   │   └───win32
+│   │   │   │   │       │           │   └───windows
+│   │   │   │   │       │           ├───pydevd_plugins
+│   │   │   │   │       │           │   └───extensions
+│   │   │   │   │       │           │       └───types
+│   │   │   │   │       │           ├───pydev_ipython
+│   │   │   │   │       │           ├───pydev_sitecustomize
+│   │   │   │   │       │           ├───_pydevd_bundle
+│   │   │   │   │       │           │   ├───pydevd_concurrency_analyser
+│   │   │   │   │       │           │   └───_debug_adapter
+│   │   │   │   │       │           ├───_pydevd_frame_eval
+│   │   │   │   │       │           │   └───vendored
+│   │   │   │   │       │           │       └───bytecode
+│   │   │   │   │       │           │           └───tests
+│   │   │   │   │       │           ├───_pydev_bundle
+│   │   │   │   │       │           │   └───fsnotify
+│   │   │   │   │       │           └───_pydev_runfiles
+│   │   │   │   │       ├───importlib_metadata
+│   │   │   │   │       ├───importlib_metadata-6.6.0.dist-info
+│   │   │   │   │       ├───microvenv-2023.2.0.dist-info
+│   │   │   │   │       │   └───licenses
+│   │   │   │   │       ├───packaging
+│   │   │   │   │       ├───packaging-23.1.dist-info
+│   │   │   │   │       ├───tomli
+│   │   │   │   │       ├───tomli-2.0.1.dist-info
+│   │   │   │   │       ├───typing_extensions-4.7.1.dist-info
+│   │   │   │   │       ├───zipp
+│   │   │   │   │       └───zipp-3.15.0.dist-info
+│   │   │   │   ├───testing_tools
+│   │   │   │   │   └───adapter
+│   │   │   │   │       └───pytest
+│   │   │   │   ├───unittestadapter
+│   │   │   │   ├───vscode_datascience_helpers
+│   │   │   │   │   └───tests
+│   │   │   │   └───vscode_pytest
+│   │   │   ├───resources
+│   │   │   │   ├───dark
+│   │   │   │   ├───light
+│   │   │   │   └───walkthrough
+│   │   │   ├───schemas
+│   │   │   └───syntaxes
+│   │   ├───ms-python.vscode-pylance-2023.8.50
+│   │   │   ├───dist
+│   │   │   │   ├───.cache
+│   │   │   │   │   └───global_indices
+│   │   │   │   ├───bundled
+│   │   │   │   │   ├───files
+│   │   │   │   │   ├───indices
+│   │   │   │   │   ├───native-stubs
+│   │   │   │   │   │   ├───lxml
+│   │   │   │   │   │   ├───numpy
+│   │   │   │   │   │   │   ├───core
+│   │   │   │   │   │   │   ├───fft
+│   │   │   │   │   │   │   ├───linalg
+│   │   │   │   │   │   │   └───random
+│   │   │   │   │   │   └───pandas
+│   │   │   │   │   │       ├───io
+│   │   │   │   │   │       │   └───sas
+│   │   │   │   │   │       └───_libs
+│   │   │   │   │   │           ├───tslibs
+│   │   │   │   │   │           └───window
+│   │   │   │   │   └───stubs
+│   │   │   │   │       ├───django-stubs
+│   │   │   │   │       │   ├───apps
+│   │   │   │   │       │   ├───conf
+│   │   │   │   │       │   │   ├───locale
+│   │   │   │   │       │   │   └───urls
+│   │   │   │   │       │   ├───contrib
+│   │   │   │   │       │   │   ├───admin
+│   │   │   │   │       │   │   │   ├───migrations
+│   │   │   │   │       │   │   │   ├───templatetags
+│   │   │   │   │       │   │   │   └───views
+│   │   │   │   │       │   │   ├───admindocs
+│   │   │   │   │       │   │   ├───auth
+│   │   │   │   │       │   │   │   ├───handlers
+│   │   │   │   │       │   │   │   ├───management
+│   │   │   │   │       │   │   │   │   └───commands
+│   │   │   │   │       │   │   │   └───migrations
+│   │   │   │   │       │   │   ├───contenttypes
+│   │   │   │   │       │   │   │   ├───management
+│   │   │   │   │       │   │   │   │   └───commands
+│   │   │   │   │       │   │   │   └───migrations
+│   │   │   │   │       │   │   ├───flatpages
+│   │   │   │   │       │   │   │   ├───migrations
+│   │   │   │   │       │   │   │   └───templatetags
+│   │   │   │   │       │   │   ├───gis
+│   │   │   │   │       │   │   │   ├───admin
+│   │   │   │   │       │   │   │   ├───db
+│   │   │   │   │       │   │   │   │   ├───backends
+│   │   │   │   │       │   │   │   │   │   ├───base
+│   │   │   │   │       │   │   │   │   │   ├───mysql
+│   │   │   │   │       │   │   │   │   │   ├───oracle
+│   │   │   │   │       │   │   │   │   │   ├───postgis
+│   │   │   │   │       │   │   │   │   │   └───spatialite
+│   │   │   │   │       │   │   │   │   └───models
+│   │   │   │   │       │   │   │   │       └───sql
+│   │   │   │   │       │   │   │   ├───forms
+│   │   │   │   │       │   │   │   ├───gdal
+│   │   │   │   │       │   │   │   │   ├───prototypes
+│   │   │   │   │       │   │   │   │   └───raster
+│   │   │   │   │       │   │   │   ├───geoip2
+│   │   │   │   │       │   │   │   ├───geos
+│   │   │   │   │       │   │   │   │   └───prototypes
+│   │   │   │   │       │   │   │   ├───serializers
+│   │   │   │   │       │   │   │   ├───sitemaps
+│   │   │   │   │       │   │   │   └───utils
+│   │   │   │   │       │   │   ├───humanize
+│   │   │   │   │       │   │   │   └───templatetags
+│   │   │   │   │       │   │   ├───messages
+│   │   │   │   │       │   │   │   └───storage
+│   │   │   │   │       │   │   ├───postgres
+│   │   │   │   │       │   │   │   ├───aggregates
+│   │   │   │   │       │   │   │   └───fields
+│   │   │   │   │       │   │   ├───redirects
+│   │   │   │   │       │   │   │   └───migrations
+│   │   │   │   │       │   │   ├───sessions
+│   │   │   │   │       │   │   │   ├───backends
+│   │   │   │   │       │   │   │   ├───management
+│   │   │   │   │       │   │   │   │   └───commands
+│   │   │   │   │       │   │   │   └───migrations
+│   │   │   │   │       │   │   ├───sitemaps
+│   │   │   │   │       │   │   │   └───management
+│   │   │   │   │       │   │   │       └───commands
+│   │   │   │   │       │   │   ├───sites
+│   │   │   │   │       │   │   │   └───migrations
+│   │   │   │   │       │   │   ├───staticfiles
+│   │   │   │   │       │   │   │   ├───management
+│   │   │   │   │       │   │   │   │   └───commands
+│   │   │   │   │       │   │   │   └───templatetags
+│   │   │   │   │       │   │   └───syndication
+│   │   │   │   │       │   ├───core
+│   │   │   │   │       │   │   ├───cache
+│   │   │   │   │       │   │   │   └───backends
+│   │   │   │   │       │   │   ├───checks
+│   │   │   │   │       │   │   │   ├───compatibility
+│   │   │   │   │       │   │   │   └───security
+│   │   │   │   │       │   │   ├───files
+│   │   │   │   │       │   │   ├───handlers
+│   │   │   │   │       │   │   ├───mail
+│   │   │   │   │       │   │   │   └───backends
+│   │   │   │   │       │   │   ├───management
+│   │   │   │   │       │   │   │   └───commands
+│   │   │   │   │       │   │   ├───serializers
+│   │   │   │   │       │   │   └───servers
+│   │   │   │   │       │   ├───db
+│   │   │   │   │       │   │   ├───backends
+│   │   │   │   │       │   │   │   ├───base
+│   │   │   │   │       │   │   │   ├───dummy
+│   │   │   │   │       │   │   │   ├───mysql
+│   │   │   │   │       │   │   │   ├───oracle
+│   │   │   │   │       │   │   │   ├───postgresql
+│   │   │   │   │       │   │   │   └───sqlite3
+│   │   │   │   │       │   │   ├───migrations
+│   │   │   │   │       │   │   │   └───operations
+│   │   │   │   │       │   │   └───models
+│   │   │   │   │       │   │       ├───fields
+│   │   │   │   │       │   │       ├───functions
+│   │   │   │   │       │   │       └───sql
+│   │   │   │   │       │   ├───dispatch
+│   │   │   │   │       │   ├───forms
+│   │   │   │   │       │   ├───http
+│   │   │   │   │       │   ├───middleware
+│   │   │   │   │       │   ├───template
+│   │   │   │   │       │   │   ├───backends
+│   │   │   │   │       │   │   └───loaders
+│   │   │   │   │       │   ├───templatetags
+│   │   │   │   │       │   ├───test
+│   │   │   │   │       │   ├───urls
+│   │   │   │   │       │   ├───utils
+│   │   │   │   │       │   │   └───translation
+│   │   │   │   │       │   └───views
+│   │   │   │   │       │       ├───decorators
+│   │   │   │   │       │       └───generic
+│   │   │   │   │       ├───IPython-stubs
+│   │   │   │   │       │   ├───core
+│   │   │   │   │       │   │   └───magics
+│   │   │   │   │       │   ├───extensions
+│   │   │   │   │       │   ├───external
+│   │   │   │   │       │   ├───lib
+│   │   │   │   │       │   ├───sphinxext
+│   │   │   │   │       │   ├───terminal
+│   │   │   │   │       │   │   ├───pt_inputhooks
+│   │   │   │   │       │   │   └───shortcuts
+│   │   │   │   │       │   ├───testing
+│   │   │   │   │       │   └───utils
+│   │   │   │   │       ├───matplotlib
+│   │   │   │   │       │   ├───axes
+│   │   │   │   │       │   ├───backends
+│   │   │   │   │       │   ├───cbook
+│   │   │   │   │       │   ├───projections
+│   │   │   │   │       │   ├───style
+│   │   │   │   │       │   ├───testing
+│   │   │   │   │       │   ├───tri
+│   │   │   │   │       │   └───_api
+│   │   │   │   │       ├───networkx
+│   │   │   │   │       │   ├───algorithms
+│   │   │   │   │       │   │   ├───approximation
+│   │   │   │   │       │   │   ├───assortativity
+│   │   │   │   │       │   │   ├───bipartite
+│   │   │   │   │       │   │   ├───centrality
+│   │   │   │   │       │   │   ├───coloring
+│   │   │   │   │       │   │   ├───community
+│   │   │   │   │       │   │   ├───components
+│   │   │   │   │       │   │   ├───connectivity
+│   │   │   │   │       │   │   ├───flow
+│   │   │   │   │       │   │   ├───isomorphism
+│   │   │   │   │       │   │   ├───link_analysis
+│   │   │   │   │       │   │   ├───minors
+│   │   │   │   │       │   │   ├───node_classification
+│   │   │   │   │       │   │   ├───operators
+│   │   │   │   │       │   │   ├───shortest_paths
+│   │   │   │   │       │   │   ├───traversal
+│   │   │   │   │       │   │   └───tree
+│   │   │   │   │       │   ├───classes
+│   │   │   │   │       │   ├───drawing
+│   │   │   │   │       │   ├───generators
+│   │   │   │   │       │   ├───linalg
+│   │   │   │   │       │   ├───readwrite
+│   │   │   │   │       │   │   └───json_graph
+│   │   │   │   │       │   ├───testing
+│   │   │   │   │       │   └───utils
+│   │   │   │   │       ├───pandas
+│   │   │   │   │       │   ├───api
+│   │   │   │   │       │   │   ├───extensions
+│   │   │   │   │       │   │   ├───indexers
+│   │   │   │   │       │   │   ├───interchange
+│   │   │   │   │       │   │   └───types
+│   │   │   │   │       │   ├───arrays
+│   │   │   │   │       │   ├───compat
+│   │   │   │   │       │   │   └───numpy
+│   │   │   │   │       │   ├───core
+│   │   │   │   │       │   │   ├───arrays
+│   │   │   │   │       │   │   │   ├───arrow
+│   │   │   │   │       │   │   │   └───sparse
+│   │   │   │   │       │   │   ├───computation
+│   │   │   │   │       │   │   ├───dtypes
+│   │   │   │   │       │   │   ├───groupby
+│   │   │   │   │       │   │   ├───indexes
+│   │   │   │   │       │   │   ├───interchange
+│   │   │   │   │       │   │   ├───internals
+│   │   │   │   │       │   │   ├───ops
+│   │   │   │   │       │   │   ├───reshape
+│   │   │   │   │       │   │   ├───sparse
+│   │   │   │   │       │   │   ├───tools
+│   │   │   │   │       │   │   ├───util
+│   │   │   │   │       │   │   └───window
+│   │   │   │   │       │   ├───errors
+│   │   │   │   │       │   ├───io
+│   │   │   │   │       │   │   ├───clipboard
+│   │   │   │   │       │   │   ├───excel
+│   │   │   │   │       │   │   ├───formats
+│   │   │   │   │       │   │   ├───json
+│   │   │   │   │       │   │   ├───parsers
+│   │   │   │   │       │   │   └───sas
+│   │   │   │   │       │   ├───plotting
+│   │   │   │   │       │   │   └───_matplotlib
+│   │   │   │   │       │   ├───tseries
+│   │   │   │   │       │   ├───util
+│   │   │   │   │       │   │   └───version
+│   │   │   │   │       │   ├───_config
+│   │   │   │   │       │   ├───_libs
+│   │   │   │   │       │   │   ├───tslibs
+│   │   │   │   │       │   │   └───window
+│   │   │   │   │       │   └───_testing
+│   │   │   │   │       ├───scipy-stubs
+│   │   │   │   │       │   ├───cluster
+│   │   │   │   │       │   ├───fft
+│   │   │   │   │       │   │   └───_pocketfft
+│   │   │   │   │       │   ├───fftpack
+│   │   │   │   │       │   ├───integrate
+│   │   │   │   │       │   ├───interpolate
+│   │   │   │   │       │   ├───io
+│   │   │   │   │       │   │   └───matlab
+│   │   │   │   │       │   ├───linalg
+│   │   │   │   │       │   ├───ndimage
+│   │   │   │   │       │   ├───odr
+│   │   │   │   │       │   ├───optimize
+│   │   │   │   │       │   │   ├───cython_optimize
+│   │   │   │   │       │   │   ├───_highs
+│   │   │   │   │       │   │   ├───_lsq
+│   │   │   │   │       │   │   └───_trlib
+│   │   │   │   │       │   ├───signal
+│   │   │   │   │       │   ├───sparse
+│   │   │   │   │       │   │   ├───csgraph
+│   │   │   │   │       │   │   └───linalg
+│   │   │   │   │       │   │       ├───dsolve
+│   │   │   │   │       │   │       ├───eigen
+│   │   │   │   │       │   │       │   └───arpack
+│   │   │   │   │       │   │       ├───isolve
+│   │   │   │   │       │   │       └───_eigen
+│   │   │   │   │       │   │           └───lobpcg
+│   │   │   │   │       │   ├───spatial
+│   │   │   │   │       │   │   └───transform
+│   │   │   │   │       │   ├───special
+│   │   │   │   │       │   ├───stats
+│   │   │   │   │       │   └───_lib
+│   │   │   │   │       │       └───_uarray
+│   │   │   │   │       ├───skimage
+│   │   │   │   │       │   ├───data
+│   │   │   │   │       │   ├───draw
+│   │   │   │   │       │   ├───feature
+│   │   │   │   │       │   ├───future
+│   │   │   │   │       │   │   └───graph
+│   │   │   │   │       │   ├───measure
+│   │   │   │   │       │   ├───morphology
+│   │   │   │   │       │   ├───scripts
+│   │   │   │   │       │   ├───transform
+│   │   │   │   │       │   └───_shared
+│   │   │   │   │       ├───sklearn
+│   │   │   │   │       │   ├───cluster
+│   │   │   │   │       │   ├───compose
+│   │   │   │   │       │   ├───covariance
+│   │   │   │   │       │   ├───cross_decomposition
+│   │   │   │   │       │   ├───datasets
+│   │   │   │   │       │   │   ├───data
+│   │   │   │   │       │   │   ├───descr
+│   │   │   │   │       │   │   └───images
+│   │   │   │   │       │   ├───decomposition
+│   │   │   │   │       │   ├───ensemble
+│   │   │   │   │       │   │   └───_hist_gradient_boosting
+│   │   │   │   │       │   ├───experimental
+│   │   │   │   │       │   ├───externals
+│   │   │   │   │       │   │   └───_packaging
+│   │   │   │   │       │   ├───feature_extraction
+│   │   │   │   │       │   ├───feature_selection
+│   │   │   │   │       │   ├───gaussian_process
+│   │   │   │   │       │   ├───impute
+│   │   │   │   │       │   ├───inspection
+│   │   │   │   │       │   │   └───_plot
+│   │   │   │   │       │   ├───linear_model
+│   │   │   │   │       │   │   └───_glm
+│   │   │   │   │       │   ├───manifold
+│   │   │   │   │       │   ├───metrics
+│   │   │   │   │       │   │   ├───cluster
+│   │   │   │   │       │   │   ├───_pairwise_distances_reduction
+│   │   │   │   │       │   │   └───_plot
+│   │   │   │   │       │   ├───mixture
+│   │   │   │   │       │   ├───model_selection
+│   │   │   │   │       │   ├───neighbors
+│   │   │   │   │       │   ├───neural_network
+│   │   │   │   │       │   ├───preprocessing
+│   │   │   │   │       │   ├───semi_supervised
+│   │   │   │   │       │   ├───svm
+│   │   │   │   │       │   ├───tests
+│   │   │   │   │       │   ├───tree
+│   │   │   │   │       │   ├───utils
+│   │   │   │   │       │   ├───_build_utils
+│   │   │   │   │       │   ├───_loss
+│   │   │   │   │       │   └───__check_build
+│   │   │   │   │       ├───transformers-stubs
+│   │   │   │   │       │   └───models
+│   │   │   │   │       │       └───auto
+│   │   │   │   │       └───vispy
+│   │   │   │   │           ├───app
+│   │   │   │   │           ├───color
+│   │   │   │   │           ├───ext
+│   │   │   │   │           ├───geometry
+│   │   │   │   │           ├───gloo
+│   │   │   │   │           │   └───gl
+│   │   │   │   │           ├───glsl
+│   │   │   │   │           ├───io
+│   │   │   │   │           ├───plot
+│   │   │   │   │           ├───scene
+│   │   │   │   │           │   ├───cameras
+│   │   │   │   │           │   └───widgets
+│   │   │   │   │           ├───testing
+│   │   │   │   │           ├───util
+│   │   │   │   │           │   ├───dpi
+│   │   │   │   │           │   ├───fonts
+│   │   │   │   │           │   └───svg
+│   │   │   │   │           └───visuals
+│   │   │   │   │               ├───collections
+│   │   │   │   │               ├───filters
+│   │   │   │   │               ├───glsl
+│   │   │   │   │               ├───graphs
+│   │   │   │   │               │   └───layouts
+│   │   │   │   │               ├───line
+│   │   │   │   │               ├───shaders
+│   │   │   │   │               ├───text
+│   │   │   │   │               └───transforms
+│   │   │   │   ├───schemas
+│   │   │   │   ├───scripts
+│   │   │   │   └───typeshed-fallback
+│   │   │   │       ├───stdlib
+│   │   │   │       │   ├───asyncio
+│   │   │   │       │   ├───collections
+│   │   │   │       │   ├───concurrent
+│   │   │   │       │   │   └───futures
+│   │   │   │       │   ├───ctypes
+│   │   │   │       │   ├───curses
+│   │   │   │       │   ├───dbm
+│   │   │   │       │   ├───distutils
+│   │   │   │       │   │   └───command
+│   │   │   │       │   ├───email
+│   │   │   │       │   │   └───mime
+│   │   │   │       │   ├───encodings
+│   │   │   │       │   ├───ensurepip
+│   │   │   │       │   ├───html
+│   │   │   │       │   ├───http
+│   │   │   │       │   ├───importlib
+│   │   │   │       │   │   ├───metadata
+│   │   │   │       │   │   └───resources
+│   │   │   │       │   ├───json
+│   │   │   │       │   ├───lib2to3
+│   │   │   │       │   │   ├───fixes
+│   │   │   │       │   │   └───pgen2
+│   │   │   │       │   ├───logging
+│   │   │   │       │   ├───msilib
+│   │   │   │       │   ├───multiprocessing
+│   │   │   │       │   │   └───dummy
+│   │   │   │       │   ├───os
+│   │   │   │       │   ├───pydoc_data
+│   │   │   │       │   ├───pyexpat
+│   │   │   │       │   ├───sqlite3
+│   │   │   │       │   ├───tkinter
+│   │   │   │       │   ├───unittest
+│   │   │   │       │   ├───urllib
+│   │   │   │       │   ├───venv
+│   │   │   │       │   ├───wsgiref
+│   │   │   │       │   ├───xml
+│   │   │   │       │   │   ├───dom
+│   │   │   │       │   │   ├───etree
+│   │   │   │       │   │   ├───parsers
+│   │   │   │       │   │   │   └───expat
+│   │   │   │       │   │   └───sax
+│   │   │   │       │   ├───xmlrpc
+│   │   │   │       │   ├───zoneinfo
+│   │   │   │       │   └───_typeshed
+│   │   │   │       └───stubs
+│   │   │   │           ├───aiofiles
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───aiofiles
+│   │   │   │           │       ├───tempfile
+│   │   │   │           │       └───threadpool
+│   │   │   │           ├───aws-xray-sdk
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───aws_xray_sdk
+│   │   │   │           │       └───core
+│   │   │   │           │           ├───emitters
+│   │   │   │           │           ├───exceptions
+│   │   │   │           │           ├───models
+│   │   │   │           │           ├───plugins
+│   │   │   │           │           ├───sampling
+│   │   │   │           │           │   └───local
+│   │   │   │           │           ├───streaming
+│   │   │   │           │           └───utils
+│   │   │   │           ├───beautifulsoup4
+│   │   │   │           │   └───bs4
+│   │   │   │           │       └───builder
+│   │   │   │           ├───bleach
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───bleach
+│   │   │   │           ├───boltons
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───boltons
+│   │   │   │           ├───boto
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───boto
+│   │   │   │           │       ├───ec2
+│   │   │   │           │       ├───elb
+│   │   │   │           │       ├───kms
+│   │   │   │           │       └───s3
+│   │   │   │           ├───braintree
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───braintree
+│   │   │   │           │       ├───dispute_details
+│   │   │   │           │       ├───exceptions
+│   │   │   │           │       │   └───http
+│   │   │   │           │       ├───merchant_account
+│   │   │   │           │       └───util
+│   │   │   │           ├───cachetools
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───cachetools
+│   │   │   │           ├───caldav
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───caldav
+│   │   │   │           │       ├───elements
+│   │   │   │           │       └───lib
+│   │   │   │           ├───cffi
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───cffi
+│   │   │   │           ├───chevron
+│   │   │   │           │   └───chevron
+│   │   │   │           ├───click-default-group
+│   │   │   │           ├───click-spinner
+│   │   │   │           │   └───click_spinner
+│   │   │   │           ├───colorama
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───colorama
+│   │   │   │           ├───commonmark
+│   │   │   │           │   └───commonmark
+│   │   │   │           │       └───render
+│   │   │   │           ├───console-menu
+│   │   │   │           │   └───consolemenu
+│   │   │   │           │       ├───format
+│   │   │   │           │       ├───items
+│   │   │   │           │       └───validators
+│   │   │   │           ├───croniter
+│   │   │   │           │   └───croniter
+│   │   │   │           ├───dateparser
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   ├───dateparser
+│   │   │   │           │   │   ├───calendars
+│   │   │   │           │   │   ├───custom_language_detection
+│   │   │   │           │   │   ├───data
+│   │   │   │           │   │   ├───languages
+│   │   │   │           │   │   ├───search
+│   │   │   │           │   │   └───utils
+│   │   │   │           │   └───dateparser_data
+│   │   │   │           ├───decorator
+│   │   │   │           │   └───@tests
+│   │   │   │           ├───Deprecated
+│   │   │   │           │   └───deprecated
+│   │   │   │           ├───dj-database-url
+│   │   │   │           │   └───@tests
+│   │   │   │           ├───dockerfile-parse
+│   │   │   │           │   └───dockerfile_parse
+│   │   │   │           ├───docopt
+│   │   │   │           ├───docutils
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───docutils
+│   │   │   │           │       ├───languages
+│   │   │   │           │       ├───parsers
+│   │   │   │           │       │   └───rst
+│   │   │   │           │       │       └───directives
+│   │   │   │           │       ├───readers
+│   │   │   │           │       ├───transforms
+│   │   │   │           │       ├───utils
+│   │   │   │           │       └───writers
+│   │   │   │           ├───editdistance
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───editdistance
+│   │   │   │           ├───entrypoints
+│   │   │   │           │   └───@tests
+│   │   │   │           ├───ExifRead
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───exifread
+│   │   │   │           │       └───tags
+│   │   │   │           │           └───makernote
+│   │   │   │           ├───first
+│   │   │   │           ├───flake8-2020
+│   │   │   │           ├───flake8-bugbear
+│   │   │   │           │   └───@tests
+│   │   │   │           ├───flake8-builtins
+│   │   │   │           ├───flake8-docstrings
+│   │   │   │           ├───flake8-plugin-utils
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───flake8_plugin_utils
+│   │   │   │           │       └───utils
+│   │   │   │           ├───flake8-rst-docstrings
+│   │   │   │           ├───flake8-simplify
+│   │   │   │           │   └───flake8_simplify
+│   │   │   │           ├───flake8-typing-imports
+│   │   │   │           ├───Flask-Cors
+│   │   │   │           │   └───flask_cors
+│   │   │   │           ├───Flask-Migrate
+│   │   │   │           │   └───flask_migrate
+│   │   │   │           ├───fpdf2
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───fpdf
+│   │   │   │           ├───gdb
+│   │   │   │           │   └───gdb
+│   │   │   │           ├───google-cloud-ndb
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───google
+│   │   │   │           │       └───cloud
+│   │   │   │           │           └───ndb
+│   │   │   │           ├───greenlet
+│   │   │   │           │   └───greenlet
+│   │   │   │           ├───hdbcli
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───hdbcli
+│   │   │   │           ├───html5lib
+│   │   │   │           │   └───html5lib
+│   │   │   │           │       ├───filters
+│   │   │   │           │       ├───treeadapters
+│   │   │   │           │       ├───treebuilders
+│   │   │   │           │       ├───treewalkers
+│   │   │   │           │       └───_trie
+│   │   │   │           ├───httplib2
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───httplib2
+│   │   │   │           ├───humanfriendly
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───humanfriendly
+│   │   │   │           │       └───terminal
+│   │   │   │           ├───ibm-db
+│   │   │   │           ├───influxdb-client
+│   │   │   │           │   └───influxdb_client
+│   │   │   │           │       ├───client
+│   │   │   │           │       │   ├───util
+│   │   │   │           │       │   └───write
+│   │   │   │           │       ├───domain
+│   │   │   │           │       ├───service
+│   │   │   │           │       ├───_async
+│   │   │   │           │       └───_sync
+│   │   │   │           ├───inifile
+│   │   │   │           │   └───@tests
+│   │   │   │           ├───invoke
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   │   └───test_cases
+│   │   │   │           │   └───invoke
+│   │   │   │           │       ├───completion
+│   │   │   │           │       └───parser
+│   │   │   │           ├───JACK-Client
+│   │   │   │           │   └───jack
+│   │   │   │           ├───jmespath
+│   │   │   │           │   └───jmespath
+│   │   │   │           ├───jsonschema
+│   │   │   │           │   └───jsonschema
+│   │   │   │           ├───keyboard
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───keyboard
+│   │   │   │           ├───ldap3
+│   │   │   │           │   └───ldap3
+│   │   │   │           │       ├───abstract
+│   │   │   │           │       ├───core
+│   │   │   │           │       ├───extend
+│   │   │   │           │       │   ├───microsoft
+│   │   │   │           │       │   ├───novell
+│   │   │   │           │       │   └───standard
+│   │   │   │           │       ├───operation
+│   │   │   │           │       ├───protocol
+│   │   │   │           │       │   ├───formatters
+│   │   │   │           │       │   ├───sasl
+│   │   │   │           │       │   └───schemas
+│   │   │   │           │       ├───strategy
+│   │   │   │           │       └───utils
+│   │   │   │           ├───Markdown
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───markdown
+│   │   │   │           │       └───extensions
+│   │   │   │           ├───mock
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───mock
+│   │   │   │           ├───mypy-extensions
+│   │   │   │           │   └───@tests
+│   │   │   │           ├───mysqlclient
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───MySQLdb
+│   │   │   │           │       └───constants
+│   │   │   │           ├───netaddr
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───netaddr
+│   │   │   │           │       ├───contrib
+│   │   │   │           │       ├───eui
+│   │   │   │           │       ├───ip
+│   │   │   │           │       └───strategy
+│   │   │   │           ├───oauthlib
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───oauthlib
+│   │   │   │           │       ├───oauth1
+│   │   │   │           │       │   └───rfc5849
+│   │   │   │           │       │       └───endpoints
+│   │   │   │           │       ├───oauth2
+│   │   │   │           │       │   └───rfc6749
+│   │   │   │           │       │       ├───clients
+│   │   │   │           │       │       ├───endpoints
+│   │   │   │           │       │       └───grant_types
+│   │   │   │           │       └───openid
+│   │   │   │           │           └───connect
+│   │   │   │           │               └───core
+│   │   │   │           │                   ├───endpoints
+│   │   │   │           │                   └───grant_types
+│   │   │   │           ├───openpyxl
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   │   └───test_cases
+│   │   │   │           │   └───openpyxl
+│   │   │   │           │       ├───cell
+│   │   │   │           │       ├───chart
+│   │   │   │           │       ├───chartsheet
+│   │   │   │           │       ├───comments
+│   │   │   │           │       ├───compat
+│   │   │   │           │       ├───descriptors
+│   │   │   │           │       ├───drawing
+│   │   │   │           │       ├───formatting
+│   │   │   │           │       ├───formula
+│   │   │   │           │       ├───packaging
+│   │   │   │           │       ├───pivot
+│   │   │   │           │       ├───reader
+│   │   │   │           │       ├───styles
+│   │   │   │           │       ├───utils
+│   │   │   │           │       ├───workbook
+│   │   │   │           │       │   └───external_link
+│   │   │   │           │       ├───worksheet
+│   │   │   │           │       ├───writer
+│   │   │   │           │       └───xml
+│   │   │   │           ├───opentracing
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───opentracing
+│   │   │   │           │       ├───ext
+│   │   │   │           │       ├───harness
+│   │   │   │           │       ├───mocktracer
+│   │   │   │           │       └───scope_managers
+│   │   │   │           ├───paho-mqtt
+│   │   │   │           │   └───paho
+│   │   │   │           │       └───mqtt
+│   │   │   │           ├───paramiko
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───paramiko
+│   │   │   │           ├───parsimonious
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───parsimonious
+│   │   │   │           ├───passlib
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───passlib
+│   │   │   │           │       ├───crypto
+│   │   │   │           │       │   ├───scrypt
+│   │   │   │           │       │   └───_blowfish
+│   │   │   │           │       ├───ext
+│   │   │   │           │       │   └───django
+│   │   │   │           │       ├───handlers
+│   │   │   │           │       └───utils
+│   │   │   │           │           └───compat
+│   │   │   │           ├───passpy
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───passpy
+│   │   │   │           ├───peewee
+│   │   │   │           │   └───@tests
+│   │   │   │           ├───pep8-naming
+│   │   │   │           │   └───@tests
+│   │   │   │           ├───pexpect
+│   │   │   │           │   └───pexpect
+│   │   │   │           ├───pika
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───pika
+│   │   │   │           │       └───adapters
+│   │   │   │           │           └───utils
+│   │   │   │           ├───Pillow
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   │   └───test_cases
+│   │   │   │           │   └───PIL
+│   │   │   │           ├───playsound
+│   │   │   │           ├───pluggy
+│   │   │   │           │   └───pluggy
+│   │   │   │           ├───polib
+│   │   │   │           ├───protobuf
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   │   └───test_cases
+│   │   │   │           │   └───google
+│   │   │   │           │       └───protobuf
+│   │   │   │           │           ├───compiler
+│   │   │   │           │           ├───internal
+│   │   │   │           │           └───util
+│   │   │   │           ├───psutil
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───psutil
+│   │   │   │           ├───psycopg2
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───psycopg2
+│   │   │   │           ├───pyasn1
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───pyasn1
+│   │   │   │           │       ├───codec
+│   │   │   │           │       │   ├───ber
+│   │   │   │           │       │   ├───cer
+│   │   │   │           │       │   ├───der
+│   │   │   │           │       │   └───native
+│   │   │   │           │       ├───compat
+│   │   │   │           │       └───type
+│   │   │   │           ├───pyaudio
+│   │   │   │           ├───PyAutoGUI
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───pyautogui
+│   │   │   │           ├───pycocotools
+│   │   │   │           │   └───pycocotools
+│   │   │   │           ├───pycurl
+│   │   │   │           ├───pyfarmhash
+│   │   │   │           ├───pyflakes
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───pyflakes
+│   │   │   │           ├───Pygments
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───pygments
+│   │   │   │           │       ├───filters
+│   │   │   │           │       ├───formatters
+│   │   │   │           │       ├───lexers
+│   │   │   │           │       └───styles
+│   │   │   │           ├───pyinstaller
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   ├───PyInstaller
+│   │   │   │           │   │   ├───building
+│   │   │   │           │   │   ├───depend
+│   │   │   │           │   │   ├───isolated
+│   │   │   │           │   │   ├───lib
+│   │   │   │           │   │   │   └───modulegraph
+│   │   │   │           │   │   └───utils
+│   │   │   │           │   │       ├───hooks
+│   │   │   │           │   │       └───win32
+│   │   │   │           │   └───pyi_splash
+│   │   │   │           ├───PyMySQL
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───pymysql
+│   │   │   │           │       └───constants
+│   │   │   │           ├───pynput
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───pynput
+│   │   │   │           │       ├───keyboard
+│   │   │   │           │       └───mouse
+│   │   │   │           ├───pyOpenSSL
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───OpenSSL
+│   │   │   │           ├───pyRFC3339
+│   │   │   │           │   └───pyrfc3339
+│   │   │   │           ├───PyScreeze
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───pyscreeze
+│   │   │   │           ├───pyserial
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───serial
+│   │   │   │           │       ├───threaded
+│   │   │   │           │       ├───tools
+│   │   │   │           │       └───urlhandler
+│   │   │   │           ├───pysftp
+│   │   │   │           │   └───pysftp
+│   │   │   │           ├───pytest-lazy-fixture
+│   │   │   │           │   └───@tests
+│   │   │   │           ├───python-crontab
+│   │   │   │           │   └───@tests
+│   │   │   │           ├───python-datemath
+│   │   │   │           │   └───datemath
+│   │   │   │           ├───python-dateutil
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   │   └───test_cases
+│   │   │   │           │   └───dateutil
+│   │   │   │           │       ├───parser
+│   │   │   │           │       ├───tz
+│   │   │   │           │       └───zoneinfo
+│   │   │   │           ├───python-gflags
+│   │   │   │           │   └───@tests
+│   │   │   │           ├───python-jose
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───jose
+│   │   │   │           │       └───backends
+│   │   │   │           ├───python-nmap
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───nmap
+│   │   │   │           ├───python-slugify
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───slugify
+│   │   │   │           ├───python-xlib
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───Xlib
+│   │   │   │           │       ├───ext
+│   │   │   │           │       ├───keysymdef
+│   │   │   │           │       ├───protocol
+│   │   │   │           │       ├───support
+│   │   │   │           │       └───xobject
+│   │   │   │           ├───pytz
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───pytz
+│   │   │   │           ├───pyvmomi
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───pyVmomi
+│   │   │   │           │       ├───vim
+│   │   │   │           │       └───vmodl
+│   │   │   │           ├───pywin32
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   ├───isapi
+│   │   │   │           │   ├───pythonwin
+│   │   │   │           │   ├───win32
+│   │   │   │           │   │   └───lib
+│   │   │   │           │   ├───win32com
+│   │   │   │           │   │   ├───adsi
+│   │   │   │           │   │   ├───authorization
+│   │   │   │           │   │   ├───axcontrol
+│   │   │   │           │   │   ├───axdebug
+│   │   │   │           │   │   ├───axscript
+│   │   │   │           │   │   │   ├───client
+│   │   │   │           │   │   │   └───server
+│   │   │   │           │   │   ├───bits
+│   │   │   │           │   │   ├───client
+│   │   │   │           │   │   ├───directsound
+│   │   │   │           │   │   ├───ifilter
+│   │   │   │           │   │   ├───internet
+│   │   │   │           │   │   ├───mapi
+│   │   │   │           │   │   ├───propsys
+│   │   │   │           │   │   ├───server
+│   │   │   │           │   │   ├───shell
+│   │   │   │           │   │   └───taskscheduler
+│   │   │   │           │   └───win32comext
+│   │   │   │           │       ├───adsi
+│   │   │   │           │       ├───authorization
+│   │   │   │           │       ├───axcontrol
+│   │   │   │           │       ├───axdebug
+│   │   │   │           │       ├───axscript
+│   │   │   │           │       │   ├───client
+│   │   │   │           │       │   └───server
+│   │   │   │           │       ├───bits
+│   │   │   │           │       ├───directsound
+│   │   │   │           │       ├───ifilter
+│   │   │   │           │       ├───internet
+│   │   │   │           │       ├───mapi
+│   │   │   │           │       ├───propsys
+│   │   │   │           │       ├───shell
+│   │   │   │           │       └───taskscheduler
+│   │   │   │           ├───PyYAML
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───yaml
+│   │   │   │           ├───qrcode
+│   │   │   │           │   └───qrcode
+│   │   │   │           │       └───image
+│   │   │   │           │           └───styles
+│   │   │   │           │               └───moduledrawers
+│   │   │   │           ├───redis
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───redis
+│   │   │   │           │       ├───asyncio
+│   │   │   │           │       └───commands
+│   │   │   │           │           ├───bf
+│   │   │   │           │           ├───graph
+│   │   │   │           │           ├───json
+│   │   │   │           │           ├───search
+│   │   │   │           │           └───timeseries
+│   │   │   │           ├───regex
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   │   └───test_cases
+│   │   │   │           │   └───regex
+│   │   │   │           ├───requests
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   │   └───test_cases
+│   │   │   │           │   └───requests
+│   │   │   │           ├───retry
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───retry
+│   │   │   │           ├───s2clientprotocol
+│   │   │   │           │   └───s2clientprotocol
+│   │   │   │           ├───Send2Trash
+│   │   │   │           │   └───send2trash
+│   │   │   │           ├───setuptools
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   │   └───test_cases
+│   │   │   │           │   ├───pkg_resources
+│   │   │   │           │   │   └───_vendor
+│   │   │   │           │   │       └───packaging
+│   │   │   │           │   └───setuptools
+│   │   │   │           │       ├───command
+│   │   │   │           │       ├───config
+│   │   │   │           │       ├───extern
+│   │   │   │           │       └───_distutils
+│   │   │   │           │           └───command
+│   │   │   │           ├───simplejson
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───simplejson
+│   │   │   │           ├───singledispatch
+│   │   │   │           │   └───@tests
+│   │   │   │           ├───six
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───six
+│   │   │   │           │       └───moves
+│   │   │   │           │           └───urllib
+│   │   │   │           ├───slumber
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───slumber
+│   │   │   │           ├───stdlib-list
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───stdlib_list
+│   │   │   │           ├───stripe
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───stripe
+│   │   │   │           │       └───api_resources
+│   │   │   │           │           ├───abstract
+│   │   │   │           │           ├───billing_portal
+│   │   │   │           │           ├───checkout
+│   │   │   │           │           ├───identity
+│   │   │   │           │           ├───issuing
+│   │   │   │           │           ├───radar
+│   │   │   │           │           ├───reporting
+│   │   │   │           │           ├───sigma
+│   │   │   │           │           ├───terminal
+│   │   │   │           │           └───test_helpers
+│   │   │   │           ├───tabulate
+│   │   │   │           │   └───tabulate
+│   │   │   │           ├───toml
+│   │   │   │           │   └───toml
+│   │   │   │           ├───toposort
+│   │   │   │           ├───tqdm
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───tqdm
+│   │   │   │           │       └───contrib
+│   │   │   │           ├───translationstring
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───translationstring
+│   │   │   │           ├───tree-sitter
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───tree_sitter
+│   │   │   │           ├───tree-sitter-languages
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───tree_sitter_languages
+│   │   │   │           ├───ttkthemes
+│   │   │   │           │   └───ttkthemes
+│   │   │   │           ├───tzlocal
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───tzlocal
+│   │   │   │           ├───ujson
+│   │   │   │           ├───untangle
+│   │   │   │           ├───urllib3
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───urllib3
+│   │   │   │           │       ├───contrib
+│   │   │   │           │       ├───packages
+│   │   │   │           │       └───util
+│   │   │   │           ├───uWSGI
+│   │   │   │           ├───vobject
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───vobject
+│   │   │   │           ├───waitress
+│   │   │   │           │   ├───@tests
+│   │   │   │           │   └───waitress
+│   │   │   │           ├───WebOb
+│   │   │   │           │   └───webob
+│   │   │   │           ├───whatthepatch
+│   │   │   │           │   └───whatthepatch
+│   │   │   │           ├───xmltodict
+│   │   │   │           ├───zstd
+│   │   │   │           └───zxcvbn
+│   │   │   │               ├───@tests
+│   │   │   │               └───zxcvbn
+│   │   │   └───images
+│   │   ├───ms-toolsai.jupyter-2023.7.1002162226-win32-x64
+│   │   │   ├───l10n
+│   │   │   ├───out
+│   │   │   │   ├───node_modules
+│   │   │   │   │   ├───@aminya
+│   │   │   │   │   │   └───node-gyp-build
+│   │   │   │   │   ├───jquery
+│   │   │   │   │   │   └───dist
+│   │   │   │   │   ├───node-gyp-build
+│   │   │   │   │   ├───pdfkit
+│   │   │   │   │   │   └───js
+│   │   │   │   │   ├───zeromq
+│   │   │   │   │   │   ├───lib
+│   │   │   │   │   │   └───prebuilds
+│   │   │   │   │   │       └───win32-x64
+│   │   │   │   │   └───zeromqold
+│   │   │   │   │       ├───lib
+│   │   │   │   │       └───prebuilds
+│   │   │   │   │           └───win32-x64
+│   │   │   │   └───webviews
+│   │   │   │       └───webview-side
+│   │   │   │           ├───errorRenderer
+│   │   │   │           ├───ipywidgetsKernel
+│   │   │   │           ├───ipywidgetsRenderer
+│   │   │   │           └───viewers
+│   │   │   ├───pythonFiles
+│   │   │   │   ├───.vscode
+│   │   │   │   └───vscode_datascience_helpers
+│   │   │   │       ├───dataframes
+│   │   │   │       ├───getVariableInfo
+│   │   │   │       ├───kernel
+│   │   │   │       └───tests
+│   │   │   ├───resources
+│   │   │   │   ├───dark
+│   │   │   │   ├───light
+│   │   │   │   └───walkthroughs
+│   │   │   ├───snippets
+│   │   │   └───temp
+│   │   │       └───jupyter
+│   │   │           └───kernels
+│   │   ├───ms-toolsai.jupyter-keymap-1.1.2
+│   │   │   └───build
+│   │   ├───ms-toolsai.jupyter-renderers-1.0.17
+│   │   │   ├───images
+│   │   │   └───out
+│   │   │       ├───client_renderer
+│   │   │       ├───extension_renderer
+│   │   │       └───node_modules
+│   │   │           └───@vscode
+│   │   │               ├───jupyter-ipywidgets7
+│   │   │               │   └───dist
+│   │   │               └───jupyter-ipywidgets8
+│   │   │                   └───dist
+│   │   ├───ms-toolsai.vscode-jupyter-cell-tags-0.1.8
+│   │   │   ├───.vscode
+│   │   │   ├───images
+│   │   │   ├───out
+│   │   │   └───src
+│   │   │       └───test
+│   │   │           └───suite
+│   │   ├───ms-toolsai.vscode-jupyter-slideshow-0.1.5
+│   │   │   ├───.vscode
+│   │   │   ├───out
+│   │   │   └───src
+│   │   ├───oracle.oracledevtools-21.6.0
+│   │   │   ├───images
+│   │   │   ├───node_modules
+│   │   │   │   ├───@types
+│   │   │   │   │   ├───isomorphic-fetch
+│   │   │   │   │   ├───jsonwebtoken
+│   │   │   │   │   ├───jssha
+│   │   │   │   │   ├───node
+│   │   │   │   │   │   ├───fs
+│   │   │   │   │   │   ├───ts3.4
+│   │   │   │   │   │   └───ts3.6
+│   │   │   │   │   ├───opossum
+│   │   │   │   │   └───sshpk
+│   │   │   │   ├───@vscode
+│   │   │   │   │   └───debugprotocol
+│   │   │   │   │       └───lib
+│   │   │   │   ├───asn1
+│   │   │   │   │   └───lib
+│   │   │   │   │       └───ber
+│   │   │   │   ├───assert-plus
+│   │   │   │   ├───balanced-match
+│   │   │   │   ├───bcrypt-pbkdf
+│   │   │   │   ├───big-integer
+│   │   │   │   ├───binary
+│   │   │   │   │   ├───example
+│   │   │   │   │   ├───lib
+│   │   │   │   │   ├───perf
+│   │   │   │   │   └───test
+│   │   │   │   ├───bluebird
+│   │   │   │   │   └───js
+│   │   │   │   │       ├───browser
+│   │   │   │   │       └───release
+│   │   │   │   ├───brace-expansion
+│   │   │   │   ├───buffer-equal-constant-time
+│   │   │   │   ├───buffer-indexof-polyfill
+│   │   │   │   │   └───test
+│   │   │   │   ├───buffers
+│   │   │   │   │   ├───examples
+│   │   │   │   │   └───test
+│   │   │   │   ├───chainsaw
+│   │   │   │   │   ├───examples
+│   │   │   │   │   └───test
+│   │   │   │   ├───concat-map
+│   │   │   │   │   ├───example
+│   │   │   │   │   └───test
+│   │   │   │   ├───core-util-is
+│   │   │   │   │   └───lib
+│   │   │   │   ├───dashdash
+│   │   │   │   │   ├───etc
+│   │   │   │   │   └───lib
+│   │   │   │   ├───duplexer2
+│   │   │   │   ├───ecc-jsbn
+│   │   │   │   │   └───lib
+│   │   │   │   ├───ecdsa-sig-formatter
+│   │   │   │   │   └───src
+│   │   │   │   ├───es6-promise
+│   │   │   │   │   ├───dist
+│   │   │   │   │   └───lib
+│   │   │   │   │       └───es6-promise
+│   │   │   │   │           └───promise
+│   │   │   │   ├───extsprintf
+│   │   │   │   │   └───lib
+│   │   │   │   ├───fs.realpath
+│   │   │   │   ├───fstream
+│   │   │   │   │   ├───examples
+│   │   │   │   │   └───lib
+│   │   │   │   ├───getpass
+│   │   │   │   │   └───lib
+│   │   │   │   ├───glob
+│   │   │   │   ├───graceful-fs
+│   │   │   │   ├───http-signature
+│   │   │   │   │   └───lib
+│   │   │   │   ├───inflight
+│   │   │   │   ├───inherits
+│   │   │   │   ├───isarray
+│   │   │   │   ├───isomorphic-fetch
+│   │   │   │   │   └───test
+│   │   │   │   ├───jsbn
+│   │   │   │   ├───json-schema
+│   │   │   │   │   └───lib
+│   │   │   │   ├───jsonwebtoken
+│   │   │   │   │   └───lib
+│   │   │   │   ├───jsprim
+│   │   │   │   │   └───lib
+│   │   │   │   ├───jssha
+│   │   │   │   │   └───src
+│   │   │   │   ├───jwa
+│   │   │   │   ├───jws
+│   │   │   │   │   └───lib
+│   │   │   │   ├───listenercount
+│   │   │   │   │   └───test
+│   │   │   │   ├───lodash
+│   │   │   │   │   └───fp
+│   │   │   │   ├───lru-cache
+│   │   │   │   ├───minimatch
+│   │   │   │   ├───minimist
+│   │   │   │   │   ├───example
+│   │   │   │   │   └───test
+│   │   │   │   ├───mkdirp
+│   │   │   │   │   └───bin
+│   │   │   │   ├───ms
+│   │   │   │   ├───node-fetch
+│   │   │   │   │   └───lib
+│   │   │   │   ├───oci-common
+│   │   │   │   │   └───lib
+│   │   │   │   │       ├───auth
+│   │   │   │   │       │   ├───helpers
+│   │   │   │   │       │   └───models
+│   │   │   │   │       └───chunks
+│   │   │   │   ├───oci-core
+│   │   │   │   │   └───lib
+│   │   │   │   │       ├───model
+│   │   │   │   │       ├───request
+│   │   │   │   │       └───response
+│   │   │   │   ├───oci-database
+│   │   │   │   │   └───lib
+│   │   │   │   │       ├───model
+│   │   │   │   │       ├───request
+│   │   │   │   │       └───response
+│   │   │   │   ├───oci-identity
+│   │   │   │   │   └───lib
+│   │   │   │   │       ├───model
+│   │   │   │   │       ├───request
+│   │   │   │   │       └───response
+│   │   │   │   ├───oci-workrequests
+│   │   │   │   │   └───lib
+│   │   │   │   │       ├───model
+│   │   │   │   │       ├───request
+│   │   │   │   │       └───response
+│   │   │   │   ├───once
+│   │   │   │   ├───opossum
+│   │   │   │   │   ├───dist
+│   │   │   │   │   └───lib
+│   │   │   │   ├───path-is-absolute
+│   │   │   │   ├───process-nextick-args
+│   │   │   │   ├───readable-stream
+│   │   │   │   │   ├───doc
+│   │   │   │   │   │   └───wg-meetings
+│   │   │   │   │   ├───lib
+│   │   │   │   │   │   └───internal
+│   │   │   │   │   │       └───streams
+│   │   │   │   │   └───node_modules
+│   │   │   │   │       └───safe-buffer
+│   │   │   │   ├───rimraf
+│   │   │   │   ├───safe-buffer
+│   │   │   │   ├───safer-buffer
+│   │   │   │   ├───semver
+│   │   │   │   │   ├───bin
+│   │   │   │   │   ├───classes
+│   │   │   │   │   ├───functions
+│   │   │   │   │   ├───internal
+│   │   │   │   │   └───ranges
+│   │   │   │   ├───setimmediate
+│   │   │   │   ├───sshpk
+│   │   │   │   │   ├───lib
+│   │   │   │   │   │   └───formats
+│   │   │   │   │   └───man
+│   │   │   │   │       └───man1
+│   │   │   │   ├───string_decoder
+│   │   │   │   │   ├───lib
+│   │   │   │   │   └───node_modules
+│   │   │   │   │       └───safe-buffer
+│   │   │   │   ├───tr46
+│   │   │   │   │   └───lib
+│   │   │   │   ├───traverse
+│   │   │   │   │   ├───examples
+│   │   │   │   │   └───test
+│   │   │   │   ├───tweetnacl
+│   │   │   │   ├───unzipper
+│   │   │   │   │   ├───.circleci
+│   │   │   │   │   └───lib
+│   │   │   │   │       └───Open
+│   │   │   │   ├───util-deprecate
+│   │   │   │   ├───uuid
+│   │   │   │   │   └───lib
+│   │   │   │   ├───verror
+│   │   │   │   │   └───lib
+│   │   │   │   ├───vscode-jsonrpc
+│   │   │   │   │   ├───lib
+│   │   │   │   │   │   ├───browser
+│   │   │   │   │   │   ├───common
+│   │   │   │   │   │   └───node
+│   │   │   │   │   └───typings
+│   │   │   │   ├───vscode-languageclient
+│   │   │   │   │   ├───lib
+│   │   │   │   │   │   ├───browser
+│   │   │   │   │   │   ├───common
+│   │   │   │   │   │   │   └───utils
+│   │   │   │   │   │   └───node
+│   │   │   │   │   └───node_modules
+│   │   │   │   │       ├───brace-expansion
+│   │   │   │   │       │   └───.github
+│   │   │   │   │       └───minimatch
+│   │   │   │   │           └───lib
+│   │   │   │   ├───vscode-languageserver-protocol
+│   │   │   │   │   └───lib
+│   │   │   │   │       ├───browser
+│   │   │   │   │       ├───common
+│   │   │   │   │       │   └───utils
+│   │   │   │   │       └───node
+│   │   │   │   ├───vscode-languageserver-textdocument
+│   │   │   │   │   └───lib
+│   │   │   │   │       ├───esm
+│   │   │   │   │       └───umd
+│   │   │   │   ├───vscode-languageserver-types
+│   │   │   │   │   └───lib
+│   │   │   │   │       ├───esm
+│   │   │   │   │       └───umd
+│   │   │   │   ├───vscode-nls
+│   │   │   │   │   └───lib
+│   │   │   │   │       ├───browser
+│   │   │   │   │       ├───common
+│   │   │   │   │       └───node
+│   │   │   │   │           └───test
+│   │   │   │   ├───webidl-conversions
+│   │   │   │   │   └───lib
+│   │   │   │   ├───whatwg-fetch
+│   │   │   │   │   └───dist
+│   │   │   │   ├───whatwg-url
+│   │   │   │   │   └───lib
+│   │   │   │   ├───wrappy
+│   │   │   │   └───yallist
+│   │   │   ├───out
+│   │   │   │   ├───connectionManagement
+│   │   │   │   ├───constants
+│   │   │   │   ├───debugger
+│   │   │   │   ├───explorer
+│   │   │   │   │   ├───autonomousDatabaseExplorer
+│   │   │   │   │   │   ├───nodes
+│   │   │   │   │   │   └───ocisdk
+│   │   │   │   │   ├───editors
+│   │   │   │   │   ├───images
+│   │   │   │   │   │   ├───dark
+│   │   │   │   │   │   └───light
+│   │   │   │   │   └───nodes
+│   │   │   │   ├───infrastructure
+│   │   │   │   ├───models
+│   │   │   │   ├───prompts
+│   │   │   │   ├───scriptExecution
+│   │   │   │   ├───server
+│   │   │   │   │   └───runtimes
+│   │   │   │   │       ├───linux
+│   │   │   │   │       │   └───lib
+│   │   │   │   │       │       └───net6.0
+│   │   │   │   │       ├───osx
+│   │   │   │   │       │   └───lib
+│   │   │   │   │       │       └───net6.0
+│   │   │   │   │       └───win
+│   │   │   │   │           └───lib
+│   │   │   │   │               └───net6.0
+│   │   │   │   ├───tests
+│   │   │   │   ├───ui
+│   │   │   │   │   ├───css
+│   │   │   │   │   │   ├───alta
+│   │   │   │   │   │   │   └───14.1.0
+│   │   │   │   │   │   │       ├───android
+│   │   │   │   │   │   │       │   ├───fonts
+│   │   │   │   │   │   │       │   └───images
+│   │   │   │   │   │   │       │       └───sprites
+│   │   │   │   │   │   │       ├───common
+│   │   │   │   │   │   │       │   └───images
+│   │   │   │   │   │   │       │       └───sprites
+│   │   │   │   │   │   │       ├───ios
+│   │   │   │   │   │   │       │   ├───fonts
+│   │   │   │   │   │   │       │   └───images
+│   │   │   │   │   │   │       │       └───sprites
+│   │   │   │   │   │   │       ├───web
+│   │   │   │   │   │   │       │   ├───fonts
+│   │   │   │   │   │   │       │   └───images
+│   │   │   │   │   │   │       │       └───sprites
+│   │   │   │   │   │   │       └───windows
+│   │   │   │   │   │   │           ├───fonts
+│   │   │   │   │   │   │           └───images
+│   │   │   │   │   │   │               └───sprites
+│   │   │   │   │   │   ├───fonts
+│   │   │   │   │   │   ├───images
+│   │   │   │   │   │   │   ├───dark
+│   │   │   │   │   │   │   └───light
+│   │   │   │   │   │   ├───localization
+│   │   │   │   │   │   ├───redwood
+│   │   │   │   │   │   │   └───14.1.0
+│   │   │   │   │   │   │       └───web
+│   │   │   │   │   │   │           ├───fonts
+│   │   │   │   │   │   │           └───images
+│   │   │   │   │   │   ├───stable
+│   │   │   │   │   │   │   └───14.1.0
+│   │   │   │   │   │   │       └───web
+│   │   │   │   │   │   │           ├───fonts
+│   │   │   │   │   │   │           └───images
+│   │   │   │   │   │   └───theme-redwood
+│   │   │   │   │   │       └───14.1.0
+│   │   │   │   │   │           └───web
+│   │   │   │   │   │               └───images
+│   │   │   │   │   ├───images
+│   │   │   │   │   └───js
+│   │   │   │   │       ├───common
+│   │   │   │   │       ├───libs
+│   │   │   │   │       │   ├───dnd-polyfill
+│   │   │   │   │       │   ├───hammer
+│   │   │   │   │       │   ├───jquery
+│   │   │   │   │       │   │   └───jqueryui-amd-1.13.2.min
+│   │   │   │   │       │   │       ├───vendor
+│   │   │   │   │       │   │       │   └───jquery-color
+│   │   │   │   │       │   │       └───widgets
+│   │   │   │   │       │   ├───js-signals
+│   │   │   │   │       │   ├───knockout
+│   │   │   │   │       │   ├───oj
+│   │   │   │   │       │   │   └───14.1.0
+│   │   │   │   │       │   │       ├───min
+│   │   │   │   │       │   │       └───resources
+│   │   │   │   │       │   │           ├───internal-deps
+│   │   │   │   │       │   │           │   └───dvt
+│   │   │   │   │       │   │           │       ├───gauge
+│   │   │   │   │       │   │           │       ├───sunburst
+│   │   │   │   │       │   │           │       └───thematicMap
+│   │   │   │   │       │   │           │           └───basemaps
+│   │   │   │   │       │   │           │               └───resourceBundles
+│   │   │   │   │       │   │           ├───nls
+│   │   │   │   │       │   │           │   ├───ar
+│   │   │   │   │       │   │           │   ├───ar-AE
+│   │   │   │   │       │   │           │   ├───ar-BH
+│   │   │   │   │       │   │           │   ├───ar-DZ
+│   │   │   │   │       │   │           │   ├───ar-EG
+│   │   │   │   │       │   │           │   ├───ar-IQ
+│   │   │   │   │       │   │           │   ├───ar-JO
+│   │   │   │   │       │   │           │   ├───ar-KW
+│   │   │   │   │       │   │           │   ├───ar-LB
+│   │   │   │   │       │   │           │   ├───ar-LY
+│   │   │   │   │       │   │           │   ├───ar-MA
+│   │   │   │   │       │   │           │   ├───ar-OM
+│   │   │   │   │       │   │           │   ├───ar-QA
+│   │   │   │   │       │   │           │   ├───ar-SA
+│   │   │   │   │       │   │           │   ├───ar-SD
+│   │   │   │   │       │   │           │   ├───ar-SY
+│   │   │   │   │       │   │           │   ├───ar-TN
+│   │   │   │   │       │   │           │   ├───ar-XB
+│   │   │   │   │       │   │           │   ├───ar-YE
+│   │   │   │   │       │   │           │   ├───as
+│   │   │   │   │       │   │           │   ├───be
+│   │   │   │   │       │   │           │   ├───be-BY
+│   │   │   │   │       │   │           │   ├───bg
+│   │   │   │   │       │   │           │   ├───bg-BG
+│   │   │   │   │       │   │           │   ├───bn
+│   │   │   │   │       │   │           │   ├───bo
+│   │   │   │   │       │   │           │   ├───bo-IN
+│   │   │   │   │       │   │           │   ├───brx
+│   │   │   │   │       │   │           │   ├───bs
+│   │   │   │   │       │   │           │   ├───bs-Cyrl
+│   │   │   │   │       │   │           │   ├───bs-Cyrl-BA
+│   │   │   │   │       │   │           │   ├───bs-Latn
+│   │   │   │   │       │   │           │   ├───bs-Latn-BA
+│   │   │   │   │       │   │           │   ├───ca
+│   │   │   │   │       │   │           │   ├───ca-ES
+│   │   │   │   │       │   │           │   ├───cs
+│   │   │   │   │       │   │           │   ├───cs-CZ
+│   │   │   │   │       │   │           │   ├───da
+│   │   │   │   │       │   │           │   ├───da-DK
+│   │   │   │   │       │   │           │   ├───de
+│   │   │   │   │       │   │           │   ├───de-AT
+│   │   │   │   │       │   │           │   ├───de-CH
+│   │   │   │   │       │   │           │   ├───de-DE
+│   │   │   │   │       │   │           │   ├───de-LU
+│   │   │   │   │       │   │           │   ├───el
+│   │   │   │   │       │   │           │   ├───el-CY
+│   │   │   │   │       │   │           │   ├───el-GR
+│   │   │   │   │       │   │           │   ├───en
+│   │   │   │   │       │   │           │   ├───en-AU
+│   │   │   │   │       │   │           │   ├───en-CA
+│   │   │   │   │       │   │           │   ├───en-GB
+│   │   │   │   │       │   │           │   ├───en-IE
+│   │   │   │   │       │   │           │   ├───en-IN
+│   │   │   │   │       │   │           │   ├───en-MT
+│   │   │   │   │       │   │           │   ├───en-NZ
+│   │   │   │   │       │   │           │   ├───en-PH
+│   │   │   │   │       │   │           │   ├───en-SG
+│   │   │   │   │       │   │           │   ├───en-US
+│   │   │   │   │       │   │           │   ├───en-XA
+│   │   │   │   │       │   │           │   ├───en-XC
+│   │   │   │   │       │   │           │   ├───en-ZA
+│   │   │   │   │       │   │           │   ├───es
+│   │   │   │   │       │   │           │   ├───es-AR
+│   │   │   │   │       │   │           │   ├───es-BO
+│   │   │   │   │       │   │           │   ├───es-CL
+│   │   │   │   │       │   │           │   ├───es-CO
+│   │   │   │   │       │   │           │   ├───es-CR
+│   │   │   │   │       │   │           │   ├───es-CU
+│   │   │   │   │       │   │           │   ├───es-DO
+│   │   │   │   │       │   │           │   ├───es-EC
+│   │   │   │   │       │   │           │   ├───es-ES
+│   │   │   │   │       │   │           │   ├───es-GT
+│   │   │   │   │       │   │           │   ├───es-HN
+│   │   │   │   │       │   │           │   ├───es-MX
+│   │   │   │   │       │   │           │   ├───es-NI
+│   │   │   │   │       │   │           │   ├───es-PA
+│   │   │   │   │       │   │           │   ├───es-PE
+│   │   │   │   │       │   │           │   ├───es-PR
+│   │   │   │   │       │   │           │   ├───es-PY
+│   │   │   │   │       │   │           │   ├───es-SV
+│   │   │   │   │       │   │           │   ├───es-US
+│   │   │   │   │       │   │           │   ├───es-UY
+│   │   │   │   │       │   │           │   ├───es-VE
+│   │   │   │   │       │   │           │   ├───et
+│   │   │   │   │       │   │           │   ├───et-EE
+│   │   │   │   │       │   │           │   ├───fi
+│   │   │   │   │       │   │           │   ├───fi-FI
+│   │   │   │   │       │   │           │   ├───fr
+│   │   │   │   │       │   │           │   ├───fr-BE
+│   │   │   │   │       │   │           │   ├───fr-CA
+│   │   │   │   │       │   │           │   ├───fr-CH
+│   │   │   │   │       │   │           │   ├───fr-FR
+│   │   │   │   │       │   │           │   ├───fr-LU
+│   │   │   │   │       │   │           │   ├───ga
+│   │   │   │   │       │   │           │   ├───ga-IE
+│   │   │   │   │       │   │           │   ├───gu
+│   │   │   │   │       │   │           │   ├───he
+│   │   │   │   │       │   │           │   ├───he-IL
+│   │   │   │   │       │   │           │   ├───hi
+│   │   │   │   │       │   │           │   ├───hi-IN
+│   │   │   │   │       │   │           │   ├───hr
+│   │   │   │   │       │   │           │   ├───hr-HR
+│   │   │   │   │       │   │           │   ├───hu
+│   │   │   │   │       │   │           │   ├───hu-HU
+│   │   │   │   │       │   │           │   ├───id
+│   │   │   │   │       │   │           │   ├───id-ID
+│   │   │   │   │       │   │           │   ├───is
+│   │   │   │   │       │   │           │   ├───is-IS
+│   │   │   │   │       │   │           │   ├───it
+│   │   │   │   │       │   │           │   ├───it-CH
+│   │   │   │   │       │   │           │   ├───it-IT
+│   │   │   │   │       │   │           │   ├───ja
+│   │   │   │   │       │   │           │   ├───ja-JP
+│   │   │   │   │       │   │           │   ├───kn
+│   │   │   │   │       │   │           │   ├───ko
+│   │   │   │   │       │   │           │   ├───ko-KR
+│   │   │   │   │       │   │           │   ├───kok
+│   │   │   │   │       │   │           │   ├───ks
+│   │   │   │   │       │   │           │   ├───lt
+│   │   │   │   │       │   │           │   ├───lt-LT
+│   │   │   │   │       │   │           │   ├───lv
+│   │   │   │   │       │   │           │   ├───lv-LV
+│   │   │   │   │       │   │           │   ├───mk
+│   │   │   │   │       │   │           │   ├───mk-MK
+│   │   │   │   │       │   │           │   ├───ml
+│   │   │   │   │       │   │           │   ├───mr
+│   │   │   │   │       │   │           │   ├───ms
+│   │   │   │   │       │   │           │   ├───ms-MY
+│   │   │   │   │       │   │           │   ├───mt
+│   │   │   │   │       │   │           │   ├───mt-MT
+│   │   │   │   │       │   │           │   ├───nb
+│   │   │   │   │       │   │           │   ├───nb-NO
+│   │   │   │   │       │   │           │   ├───ne
+│   │   │   │   │       │   │           │   ├───ne-IN
+│   │   │   │   │       │   │           │   ├───nl
+│   │   │   │   │       │   │           │   ├───nl-BE
+│   │   │   │   │       │   │           │   ├───nl-NL
+│   │   │   │   │       │   │           │   ├───nn
+│   │   │   │   │       │   │           │   ├───nn-NO
+│   │   │   │   │       │   │           │   ├───no
+│   │   │   │   │       │   │           │   ├───no-NO
+│   │   │   │   │       │   │           │   ├───or
+│   │   │   │   │       │   │           │   ├───pa
+│   │   │   │   │       │   │           │   ├───pl
+│   │   │   │   │       │   │           │   ├───pl-PL
+│   │   │   │   │       │   │           │   ├───pseudo
+│   │   │   │   │       │   │           │   ├───pt
+│   │   │   │   │       │   │           │   ├───pt-BR
+│   │   │   │   │       │   │           │   ├───pt-PT
+│   │   │   │   │       │   │           │   ├───ro
+│   │   │   │   │       │   │           │   ├───ro-RO
+│   │   │   │   │       │   │           │   ├───ru
+│   │   │   │   │       │   │           │   ├───ru-RU
+│   │   │   │   │       │   │           │   ├───sk
+│   │   │   │   │       │   │           │   ├───sk-SK
+│   │   │   │   │       │   │           │   ├───sl
+│   │   │   │   │       │   │           │   ├───sl-SI
+│   │   │   │   │       │   │           │   ├───sq
+│   │   │   │   │       │   │           │   ├───sq-AL
+│   │   │   │   │       │   │           │   ├───sr
+│   │   │   │   │       │   │           │   ├───sr-Cyrl
+│   │   │   │   │       │   │           │   ├───sr-Cyrl-BA
+│   │   │   │   │       │   │           │   ├───sr-Cyrl-ME
+│   │   │   │   │       │   │           │   ├───sr-Cyrl-RS
+│   │   │   │   │       │   │           │   ├───sr-Latn
+│   │   │   │   │       │   │           │   ├───sr-Latn-BA
+│   │   │   │   │       │   │           │   ├───sr-Latn-ME
+│   │   │   │   │       │   │           │   ├───sr-Latn-RS
+│   │   │   │   │       │   │           │   ├───sv
+│   │   │   │   │       │   │           │   ├───sv-SE
+│   │   │   │   │       │   │           │   ├───ta
+│   │   │   │   │       │   │           │   ├───te
+│   │   │   │   │       │   │           │   ├───th
+│   │   │   │   │       │   │           │   ├───th-TH
+│   │   │   │   │       │   │           │   ├───tr
+│   │   │   │   │       │   │           │   ├───tr-TR
+│   │   │   │   │       │   │           │   ├───uk
+│   │   │   │   │       │   │           │   ├───uk-UA
+│   │   │   │   │       │   │           │   ├───ur
+│   │   │   │   │       │   │           │   ├───ur-IN
+│   │   │   │   │       │   │           │   ├───vi
+│   │   │   │   │       │   │           │   ├───vi-VN
+│   │   │   │   │       │   │           │   ├───zh
+│   │   │   │   │       │   │           │   ├───zh-Hans
+│   │   │   │   │       │   │           │   ├───zh-Hans-CN
+│   │   │   │   │       │   │           │   ├───zh-Hans-SG
+│   │   │   │   │       │   │           │   ├───zh-Hant
+│   │   │   │   │       │   │           │   ├───zh-Hant-HK
+│   │   │   │   │       │   │           │   ├───zh-Hant-MO
+│   │   │   │   │       │   │           │   └───zh-Hant-TW
+│   │   │   │   │       │   │           └───root
+│   │   │   │   │       │   ├───oraclejet-preact
+│   │   │   │   │       │   │   └───amd
+│   │   │   │   │       │   │       ├───hooks
+│   │   │   │   │       │   │       │   ├───UNSAFE_useAnimation
+│   │   │   │   │       │   │       │   │   └───__tests__
+│   │   │   │   │       │   │       │   └───UNSAFE_useFocusWithin
+│   │   │   │   │       │   │       │       └───__tests__
+│   │   │   │   │       │   │       ├───images
+│   │   │   │   │       │   │       ├───PRIVATE_Collection
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───PRIVATE_List
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───PRIVATE_Message
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───PRIVATE_MessageLayer
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───PRIVATE_VirtualizedCollection
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───resources
+│   │   │   │   │       │   │       │   └───nls
+│   │   │   │   │       │   │       │       ├───ar
+│   │   │   │   │       │   │       │       ├───ar-XB
+│   │   │   │   │       │   │       │       ├───bg
+│   │   │   │   │       │   │       │       ├───bs
+│   │   │   │   │       │   │       │       ├───bs-Cyrl
+│   │   │   │   │       │   │       │       ├───cs
+│   │   │   │   │       │   │       │       ├───da
+│   │   │   │   │       │   │       │       ├───de
+│   │   │   │   │       │   │       │       ├───el
+│   │   │   │   │       │   │       │       ├───en
+│   │   │   │   │       │   │       │       ├───en-XA
+│   │   │   │   │       │   │       │       ├───en-XC
+│   │   │   │   │       │   │       │       ├───es
+│   │   │   │   │       │   │       │       ├───et
+│   │   │   │   │       │   │       │       ├───fi
+│   │   │   │   │       │   │       │       ├───fr
+│   │   │   │   │       │   │       │       ├───fr-CA
+│   │   │   │   │       │   │       │       ├───he
+│   │   │   │   │       │   │       │       ├───hr
+│   │   │   │   │       │   │       │       ├───hu
+│   │   │   │   │       │   │       │       ├───is
+│   │   │   │   │       │   │       │       ├───it
+│   │   │   │   │       │   │       │       ├───ja
+│   │   │   │   │       │   │       │       ├───ko
+│   │   │   │   │       │   │       │       ├───lt
+│   │   │   │   │       │   │       │       ├───lv
+│   │   │   │   │       │   │       │       ├───ms
+│   │   │   │   │       │   │       │       ├───nl
+│   │   │   │   │       │   │       │       ├───no
+│   │   │   │   │       │   │       │       ├───pl
+│   │   │   │   │       │   │       │       ├───pt
+│   │   │   │   │       │   │       │       ├───pt-PT
+│   │   │   │   │       │   │       │       ├───ro
+│   │   │   │   │       │   │       │       ├───ru
+│   │   │   │   │       │   │       │       ├───sk
+│   │   │   │   │       │   │       │       ├───sl
+│   │   │   │   │       │   │       │       ├───sr
+│   │   │   │   │       │   │       │       ├───sr-Latn
+│   │   │   │   │       │   │       │       ├───sv
+│   │   │   │   │       │   │       │       ├───th
+│   │   │   │   │       │   │       │       ├───tr
+│   │   │   │   │       │   │       │       ├───uk
+│   │   │   │   │       │   │       │       ├───vi
+│   │   │   │   │       │   │       │       ├───zh-Hans
+│   │   │   │   │       │   │       │       └───zh-Hant
+│   │   │   │   │       │   │       ├───Theme-redwood
+│   │   │   │   │       │   │       ├───Theme-stable
+│   │   │   │   │       │   │       ├───translationBundle
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_Avatar
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_Badge
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_BaseButton
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_Button
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_Chip
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_ComponentMessage
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_Divider
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_Environment
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_FilePicker
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_Flex
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_Floating
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_FocusTrap
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_Heading
+│   │   │   │   │       │   │       │   └───__test__
+│   │   │   │   │       │   │       ├───UNSAFE_HiddenAccessible
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_HighlightText
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_Icon
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_Indexer
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_InputPassword
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_Link
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_ListItemLayout
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_ListView
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_LoadMoreCollection
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_Menu
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_MessageToast
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_MeterBar
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_MeterCircle
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_Modal
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_NumberInputText
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_ProgressBar
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_ProgressCircle
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_RatingGauge
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_SelectMultiple
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_SelectSingle
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_Skeleton
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_Spacer
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_SplitMenuButton
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_Subheading
+│   │   │   │   │       │   │       │   └───__test__
+│   │   │   │   │       │   │       ├───UNSAFE_Text
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_TextArea
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_TextAreaAutosize
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_TextField
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_UserAssistance
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_View
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───UNSAFE_VirtualizedListView
+│   │   │   │   │       │   │       │   └───__tests__
+│   │   │   │   │       │   │       ├───utils
+│   │   │   │   │       │   │       │   ├───PRIVATE_clientHints
+│   │   │   │   │       │   │       │   │   └───__tests__
+│   │   │   │   │       │   │       │   ├───UNSAFE_classNames
+│   │   │   │   │       │   │       │   ├───UNSAFE_interpolations
+│   │   │   │   │       │   │       │   │   ├───flexbox
+│   │   │   │   │       │   │       │   │   └───flexitem
+│   │   │   │   │       │   │       │   └───UNSAFE_stringUtils
+│   │   │   │   │       │   │       └───__tests__
+│   │   │   │   │       │   │           └───FormControls
+│   │   │   │   │       │   ├───persist
+│   │   │   │   │       │   │   └───min
+│   │   │   │   │       │   │       └───impl
+│   │   │   │   │       │   ├───preact
+│   │   │   │   │       │   │   ├───compat
+│   │   │   │   │       │   │   │   └───dist
+│   │   │   │   │       │   │   ├───debug
+│   │   │   │   │       │   │   │   └───dist
+│   │   │   │   │       │   │   ├───devtools
+│   │   │   │   │       │   │   │   └───dist
+│   │   │   │   │       │   │   ├───dist
+│   │   │   │   │       │   │   ├───hooks
+│   │   │   │   │       │   │   │   └───dist
+│   │   │   │   │       │   │   └───jsx-runtime
+│   │   │   │   │       │   │       └───dist
+│   │   │   │   │       │   ├───require
+│   │   │   │   │       │   ├───require-css
+│   │   │   │   │       │   └───touchr
+│   │   │   │   │       ├───tests
+│   │   │   │   │       ├───viewModels
+│   │   │   │   │       └───views
+│   │   │   │   └───utilities
+│   │   │   ├───sample
+│   │   │   │   └───network
+│   │   │   ├───snippets
+│   │   │   └───syntaxes
+│   │   ├───redhat.java-1.21.0-win32-x64
+│   │   │   ├───dist
+│   │   │   ├───document
+│   │   │   ├───formatters
+│   │   │   ├───icons
+│   │   │   ├───jre
+│   │   │   │   └───17.0.7-win32-x86_64
+│   │   │   │       ├───bin
+│   │   │   │       │   └───server
+│   │   │   │       ├───conf
+│   │   │   │       │   ├───management
+│   │   │   │       │   └───security
+│   │   │   │       │       └───policy
+│   │   │   │       │           ├───limited
+│   │   │   │       │           └───unlimited
+│   │   │   │       ├───include
+│   │   │   │       │   └───win32
+│   │   │   │       │       └───bridge
+│   │   │   │       ├───legal
+│   │   │   │       │   ├───java.base
+│   │   │   │       │   ├───java.compiler
+│   │   │   │       │   ├───java.datatransfer
+│   │   │   │       │   ├───java.desktop
+│   │   │   │       │   ├───java.instrument
+│   │   │   │       │   ├───java.logging
+│   │   │   │       │   ├───java.management
+│   │   │   │       │   ├───java.management.rmi
+│   │   │   │       │   ├───java.naming
+│   │   │   │       │   ├───java.net.http
+│   │   │   │       │   ├───java.prefs
+│   │   │   │       │   ├───java.rmi
+│   │   │   │       │   ├───java.scripting
+│   │   │   │       │   ├───java.se
+│   │   │   │       │   ├───java.security.jgss
+│   │   │   │       │   ├───java.security.sasl
+│   │   │   │       │   ├───java.smartcardio
+│   │   │   │       │   ├───java.sql
+│   │   │   │       │   ├───java.sql.rowset
+│   │   │   │       │   ├───java.transaction.xa
+│   │   │   │       │   ├───java.xml
+│   │   │   │       │   ├───java.xml.crypto
+│   │   │   │       │   ├───jdk.accessibility
+│   │   │   │       │   ├───jdk.attach
+│   │   │   │       │   ├───jdk.charsets
+│   │   │   │       │   ├───jdk.compiler
+│   │   │   │       │   ├───jdk.crypto.cryptoki
+│   │   │   │       │   ├───jdk.crypto.ec
+│   │   │   │       │   ├───jdk.crypto.mscapi
+│   │   │   │       │   ├───jdk.dynalink
+│   │   │   │       │   ├───jdk.editpad
+│   │   │   │       │   ├───jdk.hotspot.agent
+│   │   │   │       │   ├───jdk.httpserver
+│   │   │   │       │   ├───jdk.internal.ed
+│   │   │   │       │   ├───jdk.internal.jvmstat
+│   │   │   │       │   ├───jdk.internal.le
+│   │   │   │       │   ├───jdk.internal.opt
+│   │   │   │       │   ├───jdk.internal.vm.ci
+│   │   │   │       │   ├───jdk.internal.vm.compiler
+│   │   │   │       │   ├───jdk.internal.vm.compiler.management
+│   │   │   │       │   ├───jdk.jartool
+│   │   │   │       │   ├───jdk.javadoc
+│   │   │   │       │   ├───jdk.jcmd
+│   │   │   │       │   ├───jdk.jconsole
+│   │   │   │       │   ├───jdk.jdeps
+│   │   │   │       │   ├───jdk.jdi
+│   │   │   │       │   ├───jdk.jdwp.agent
+│   │   │   │       │   ├───jdk.jfr
+│   │   │   │       │   ├───jdk.jlink
+│   │   │   │       │   ├───jdk.jpackage
+│   │   │   │       │   ├───jdk.jshell
+│   │   │   │       │   ├───jdk.jsobject
+│   │   │   │       │   ├───jdk.jstatd
+│   │   │   │       │   ├───jdk.localedata
+│   │   │   │       │   ├───jdk.management
+│   │   │   │       │   ├───jdk.management.agent
+│   │   │   │       │   ├───jdk.management.jfr
+│   │   │   │       │   ├───jdk.naming.dns
+│   │   │   │       │   ├───jdk.naming.rmi
+│   │   │   │       │   ├───jdk.net
+│   │   │   │       │   ├───jdk.nio.mapmode
+│   │   │   │       │   ├───jdk.random
+│   │   │   │       │   ├───jdk.sctp
+│   │   │   │       │   ├───jdk.security.auth
+│   │   │   │       │   ├───jdk.security.jgss
+│   │   │   │       │   ├───jdk.unsupported
+│   │   │   │       │   ├───jdk.unsupported.desktop
+│   │   │   │       │   ├───jdk.xml.dom
+│   │   │   │       │   └───jdk.zipfs
+│   │   │   │       └───lib
+│   │   │   │           ├───jfr
+│   │   │   │           └───security
+│   │   │   ├───language-support
+│   │   │   │   ├───java
+│   │   │   │   └───properties
+│   │   │   ├───lombok
+│   │   │   ├───schemas
+│   │   │   ├───server
+│   │   │   │   ├───bin
+│   │   │   │   ├───config_linux
+│   │   │   │   ├───config_mac
+│   │   │   │   ├───config_ss_linux
+│   │   │   │   ├───config_ss_mac
+│   │   │   │   ├───config_ss_win
+│   │   │   │   ├───config_win
+│   │   │   │   ├───features
+│   │   │   │   └───plugins
+│   │   │   ├───snippets
+│   │   │   └───webview-resources
+│   │   ├───redhat.vscode-yaml-1.14.0
+│   │   │   ├───dist
+│   │   │   ├───icon
+│   │   │   ├───node_modules
+│   │   │   │   └───prettier
+│   │   │   └───syntaxes
+│   │   ├───ritwickdey.liveserver-5.7.9
+│   │   │   ├───images
+│   │   │   ├───node_modules
+│   │   │   │   ├───accepts
+│   │   │   │   ├───acorn
+│   │   │   │   │   ├───acorn
+│   │   │   │   │   │   └───dist
+│   │   │   │   │   ├───acorn-loose
+│   │   │   │   │   │   └───dist
+│   │   │   │   │   ├───acorn-walk
+│   │   │   │   │   │   └───dist
+│   │   │   │   │   ├───bin
+│   │   │   │   │   └───dist
+│   │   │   │   ├───acorn-jsx
+│   │   │   │   │   └───node_modules
+│   │   │   │   │       └───acorn
+│   │   │   │   │           ├───bin
+│   │   │   │   │           ├───dist
+│   │   │   │   │           ├───rollup
+│   │   │   │   │           └───src
+│   │   │   │   │               ├───bin
+│   │   │   │   │               ├───loose
+│   │   │   │   │               └───walk
+│   │   │   │   ├───ajv
+│   │   │   │   │   ├───dist
+│   │   │   │   │   ├───lib
+│   │   │   │   │   │   ├───compile
+│   │   │   │   │   │   ├───dot
+│   │   │   │   │   │   │   └───v5
+│   │   │   │   │   │   ├───dotjs
+│   │   │   │   │   │   └───refs
+│   │   │   │   │   └───scripts
+│   │   │   │   ├───ajv-keywords
+│   │   │   │   │   └───keywords
+│   │   │   │   │       ├───dot
+│   │   │   │   │       └───dotjs
+│   │   │   │   ├───anymatch
+│   │   │   │   ├───apache-crypt
+│   │   │   │   │   └───src
+│   │   │   │   ├───apache-md5
+│   │   │   │   │   └───src
+│   │   │   │   ├───argparse
+│   │   │   │   │   └───lib
+│   │   │   │   │       ├───action
+│   │   │   │   │       │   ├───append
+│   │   │   │   │       │   └───store
+│   │   │   │   │       ├───argument
+│   │   │   │   │       └───help
+│   │   │   │   ├───array-find-index
+│   │   │   │   ├───babel-code-frame
+│   │   │   │   │   ├───lib
+│   │   │   │   │   └───node_modules
+│   │   │   │   │       ├───ansi-regex
+│   │   │   │   │       ├───ansi-styles
+│   │   │   │   │       ├───chalk
+│   │   │   │   │       ├───strip-ansi
+│   │   │   │   │       └───supports-color
+│   │   │   │   ├───balanced-match
+│   │   │   │   │   └───.github
+│   │   │   │   ├───basic-auth
+│   │   │   │   ├───batch
+│   │   │   │   ├───bcryptjs
+│   │   │   │   │   ├───.vscode
+│   │   │   │   │   ├───bin
+│   │   │   │   │   ├───dist
+│   │   │   │   │   ├───externs
+│   │   │   │   │   ├───scripts
+│   │   │   │   │   ├───src
+│   │   │   │   │   │   └───bcrypt
+│   │   │   │   │   │       ├───prng
+│   │   │   │   │   │       └───util
+│   │   │   │   │   └───tests
+│   │   │   │   ├───binary-extensions
+│   │   │   │   ├───brace-expansion
+│   │   │   │   ├───braces
+│   │   │   │   │   └───lib
+│   │   │   │   ├───buffer-from
+│   │   │   │   ├───camelcase
+│   │   │   │   ├───camelcase-keys
+│   │   │   │   ├───capture-stack-trace
+│   │   │   │   ├───chokidar
+│   │   │   │   │   ├───lib
+│   │   │   │   │   └───types
+│   │   │   │   ├───circular-json
+│   │   │   │   │   ├───build
+│   │   │   │   │   └───template
+│   │   │   │   ├───co
+│   │   │   │   ├───code-point-at
+│   │   │   │   ├───colors
+│   │   │   │   │   ├───examples
+│   │   │   │   │   ├───lib
+│   │   │   │   │   │   ├───custom
+│   │   │   │   │   │   ├───maps
+│   │   │   │   │   │   └───system
+│   │   │   │   │   └───themes
+│   │   │   │   ├───concat-map
+│   │   │   │   │   ├───example
+│   │   │   │   │   └───test
+│   │   │   │   ├───concat-stream
+│   │   │   │   ├───connect
+│   │   │   │   ├───core-util-is
+│   │   │   │   │   └───lib
+│   │   │   │   ├───cors
+│   │   │   │   │   └───lib
+│   │   │   │   ├───create-error-class
+│   │   │   │   ├───currently-unhandled
+│   │   │   │   ├───d
+│   │   │   │   │   ├───.github
+│   │   │   │   │   └───test
+│   │   │   │   ├───debug
+│   │   │   │   │   └───src
+│   │   │   │   ├───decamelize
+│   │   │   │   ├───deep-is
+│   │   │   │   │   ├───example
+│   │   │   │   │   └───test
+│   │   │   │   ├───depd
+│   │   │   │   │   └───lib
+│   │   │   │   │       └───browser
+│   │   │   │   ├───destroy
+│   │   │   │   ├───doctrine
+│   │   │   │   │   └───lib
+│   │   │   │   ├───duplexer
+│   │   │   │   │   └───test
+│   │   │   │   ├───duplexer2
+│   │   │   │   ├───ee-first
+│   │   │   │   ├───encodeurl
+│   │   │   │   ├───error-ex
+│   │   │   │   ├───es5-ext
+│   │   │   │   │   ├───.github
+│   │   │   │   │   ├───array
+│   │   │   │   │   │   ├───#
+│   │   │   │   │   │   │   ├───@@iterator
+│   │   │   │   │   │   │   ├───concat
+│   │   │   │   │   │   │   ├───copy-within
+│   │   │   │   │   │   │   ├───entries
+│   │   │   │   │   │   │   ├───fill
+│   │   │   │   │   │   │   ├───filter
+│   │   │   │   │   │   │   ├───find
+│   │   │   │   │   │   │   ├───find-index
+│   │   │   │   │   │   │   ├───keys
+│   │   │   │   │   │   │   ├───map
+│   │   │   │   │   │   │   ├───slice
+│   │   │   │   │   │   │   ├───splice
+│   │   │   │   │   │   │   └───values
+│   │   │   │   │   │   ├───from
+│   │   │   │   │   │   └───of
+│   │   │   │   │   ├───boolean
+│   │   │   │   │   ├───date
+│   │   │   │   │   │   └───#
+│   │   │   │   │   ├───error
+│   │   │   │   │   │   └───#
+│   │   │   │   │   ├───function
+│   │   │   │   │   │   └───#
+│   │   │   │   │   ├───iterable
+│   │   │   │   │   ├───json
+│   │   │   │   │   ├───math
+│   │   │   │   │   │   ├───acosh
+│   │   │   │   │   │   ├───asinh
+│   │   │   │   │   │   ├───atanh
+│   │   │   │   │   │   ├───cbrt
+│   │   │   │   │   │   ├───clz32
+│   │   │   │   │   │   ├───cosh
+│   │   │   │   │   │   ├───expm1
+│   │   │   │   │   │   ├───fround
+│   │   │   │   │   │   ├───hypot
+│   │   │   │   │   │   ├───imul
+│   │   │   │   │   │   ├───log10
+│   │   │   │   │   │   ├───log1p
+│   │   │   │   │   │   ├───log2
+│   │   │   │   │   │   ├───sign
+│   │   │   │   │   │   ├───sinh
+│   │   │   │   │   │   ├───tanh
+│   │   │   │   │   │   └───trunc
+│   │   │   │   │   ├───number
+│   │   │   │   │   │   ├───#
+│   │   │   │   │   │   ├───epsilon
+│   │   │   │   │   │   ├───is-finite
+│   │   │   │   │   │   ├───is-integer
+│   │   │   │   │   │   ├───is-nan
+│   │   │   │   │   │   ├───is-safe-integer
+│   │   │   │   │   │   ├───max-safe-integer
+│   │   │   │   │   │   └───min-safe-integer
+│   │   │   │   │   ├───object
+│   │   │   │   │   │   ├───assign
+│   │   │   │   │   │   ├───entries
+│   │   │   │   │   │   ├───keys
+│   │   │   │   │   │   └───set-prototype-of
+│   │   │   │   │   ├───promise
+│   │   │   │   │   │   └───#
+│   │   │   │   │   │       └───finally
+│   │   │   │   │   ├───reg-exp
+│   │   │   │   │   │   └───#
+│   │   │   │   │   │       ├───match
+│   │   │   │   │   │       ├───replace
+│   │   │   │   │   │       ├───search
+│   │   │   │   │   │       ├───split
+│   │   │   │   │   │       ├───sticky
+│   │   │   │   │   │       └───unicode
+│   │   │   │   │   ├───string
+│   │   │   │   │   │   ├───#
+│   │   │   │   │   │   │   ├───@@iterator
+│   │   │   │   │   │   │   ├───code-point-at
+│   │   │   │   │   │   │   ├───contains
+│   │   │   │   │   │   │   ├───ends-with
+│   │   │   │   │   │   │   ├───normalize
+│   │   │   │   │   │   │   ├───repeat
+│   │   │   │   │   │   │   └───starts-with
+│   │   │   │   │   │   ├───from-code-point
+│   │   │   │   │   │   └───raw
+│   │   │   │   │   └───test
+│   │   │   │   │       ├───array
+│   │   │   │   │       │   ├───#
+│   │   │   │   │       │   │   ├───@@iterator
+│   │   │   │   │       │   │   ├───concat
+│   │   │   │   │       │   │   ├───copy-within
+│   │   │   │   │       │   │   ├───entries
+│   │   │   │   │       │   │   ├───fill
+│   │   │   │   │       │   │   ├───filter
+│   │   │   │   │       │   │   ├───find
+│   │   │   │   │       │   │   ├───find-index
+│   │   │   │   │       │   │   ├───keys
+│   │   │   │   │       │   │   ├───map
+│   │   │   │   │       │   │   ├───slice
+│   │   │   │   │       │   │   ├───splice
+│   │   │   │   │       │   │   └───values
+│   │   │   │   │       │   ├───from
+│   │   │   │   │       │   └───of
+│   │   │   │   │       ├───boolean
+│   │   │   │   │       ├───date
+│   │   │   │   │       │   └───#
+│   │   │   │   │       ├───error
+│   │   │   │   │       │   └───#
+│   │   │   │   │       ├───function
+│   │   │   │   │       │   └───#
+│   │   │   │   │       ├───iterable
+│   │   │   │   │       ├───json
+│   │   │   │   │       ├───math
+│   │   │   │   │       │   ├───acosh
+│   │   │   │   │       │   ├───asinh
+│   │   │   │   │       │   ├───atanh
+│   │   │   │   │       │   ├───cbrt
+│   │   │   │   │       │   ├───clz32
+│   │   │   │   │       │   ├───cosh
+│   │   │   │   │       │   ├───expm1
+│   │   │   │   │       │   ├───fround
+│   │   │   │   │       │   ├───hypot
+│   │   │   │   │       │   ├───imul
+│   │   │   │   │       │   ├───log10
+│   │   │   │   │       │   ├───log1p
+│   │   │   │   │       │   ├───log2
+│   │   │   │   │       │   ├───sign
+│   │   │   │   │       │   ├───sinh
+│   │   │   │   │       │   ├───tanh
+│   │   │   │   │       │   └───trunc
+│   │   │   │   │       ├───number
+│   │   │   │   │       │   ├───#
+│   │   │   │   │       │   ├───epsilon
+│   │   │   │   │       │   ├───is-finite
+│   │   │   │   │       │   ├───is-integer
+│   │   │   │   │       │   ├───is-nan
+│   │   │   │   │       │   ├───is-safe-integer
+│   │   │   │   │       │   ├───max-safe-integer
+│   │   │   │   │       │   └───min-safe-integer
+│   │   │   │   │       ├───object
+│   │   │   │   │       │   ├───assign
+│   │   │   │   │       │   ├───entries
+│   │   │   │   │       │   ├───keys
+│   │   │   │   │       │   └───set-prototype-of
+│   │   │   │   │       ├───promise
+│   │   │   │   │       │   └───#
+│   │   │   │   │       │       └───finally
+│   │   │   │   │       ├───reg-exp
+│   │   │   │   │       │   └───#
+│   │   │   │   │       │       ├───match
+│   │   │   │   │       │       ├───replace
+│   │   │   │   │       │       ├───search
+│   │   │   │   │       │       ├───split
+│   │   │   │   │       │       ├───sticky
+│   │   │   │   │       │       └───unicode
+│   │   │   │   │       └───string
+│   │   │   │   │           ├───#
+│   │   │   │   │           │   ├───@@iterator
+│   │   │   │   │           │   ├───code-point-at
+│   │   │   │   │           │   ├───contains
+│   │   │   │   │           │   ├───ends-with
+│   │   │   │   │           │   ├───normalize
+│   │   │   │   │           │   ├───repeat
+│   │   │   │   │           │   └───starts-with
+│   │   │   │   │           ├───from-code-point
+│   │   │   │   │           └───raw
+│   │   │   │   ├───es6-iterator
+│   │   │   │   │   ├───#
+│   │   │   │   │   └───test
+│   │   │   │   │       └───#
+│   │   │   │   ├───es6-map
+│   │   │   │   │   ├───lib
+│   │   │   │   │   ├───primitive
+│   │   │   │   │   └───test
+│   │   │   │   │       ├───lib
+│   │   │   │   │       └───primitive
+│   │   │   │   ├───es6-set
+│   │   │   │   │   ├───ext
+│   │   │   │   │   ├───lib
+│   │   │   │   │   ├───node_modules
+│   │   │   │   │   │   └───es6-symbol
+│   │   │   │   │   │       └───test
+│   │   │   │   │   ├───primitive
+│   │   │   │   │   └───test
+│   │   │   │   │       ├───ext
+│   │   │   │   │       ├───lib
+│   │   │   │   │       └───primitive
+│   │   │   │   ├───es6-symbol
+│   │   │   │   │   ├───.github
+│   │   │   │   │   ├───lib
+│   │   │   │   │   │   └───private
+│   │   │   │   │   │       └───setup
+│   │   │   │   │   └───test
+│   │   │   │   ├───es6-weak-map
+│   │   │   │   │   └───test
+│   │   │   │   ├───escape-html
+│   │   │   │   ├───escape-string-regexp
+│   │   │   │   ├───escope
+│   │   │   │   │   ├───lib
+│   │   │   │   │   ├───powered-test
+│   │   │   │   │   ├───src
+│   │   │   │   │   └───third_party
+│   │   │   │   ├───eslint
+│   │   │   │   │   ├───bin
+│   │   │   │   │   ├───conf
+│   │   │   │   │   ├───lib
+│   │   │   │   │   │   ├───code-path-analysis
+│   │   │   │   │   │   ├───config
+│   │   │   │   │   │   ├───formatters
+│   │   │   │   │   │   ├───internal-rules
+│   │   │   │   │   │   ├───rules
+│   │   │   │   │   │   ├───testers
+│   │   │   │   │   │   ├───token-store
+│   │   │   │   │   │   └───util
+│   │   │   │   │   │       └───patterns
+│   │   │   │   │   ├───messages
+│   │   │   │   │   └───node_modules
+│   │   │   │   │       ├───ansi-escapes
+│   │   │   │   │       ├───ansi-regex
+│   │   │   │   │       ├───ansi-styles
+│   │   │   │   │       ├───chalk
+│   │   │   │   │       ├───cli-cursor
+│   │   │   │   │       ├───cli-width
+│   │   │   │   │       │   └───.nyc_output
+│   │   │   │   │       │       └───processinfo
+│   │   │   │   │       ├───figures
+│   │   │   │   │       ├───inquirer
+│   │   │   │   │       │   └───lib
+│   │   │   │   │       │       ├───objects
+│   │   │   │   │       │       ├───prompts
+│   │   │   │   │       │       ├───ui
+│   │   │   │   │       │       └───utils
+│   │   │   │   │       ├───is-fullwidth-code-point
+│   │   │   │   │       ├───mkdirp
+│   │   │   │   │       │   └───bin
+│   │   │   │   │       ├───onetime
+│   │   │   │   │       ├───restore-cursor
+│   │   │   │   │       ├───run-async
+│   │   │   │   │       ├───string-width
+│   │   │   │   │       ├───strip-ansi
+│   │   │   │   │       └───supports-color
+│   │   │   │   ├───espree
+│   │   │   │   │   └───lib
+│   │   │   │   ├───esprima
+│   │   │   │   │   ├───bin
+│   │   │   │   │   └───dist
+│   │   │   │   ├───esquery
+│   │   │   │   │   ├───dist
+│   │   │   │   │   └───node_modules
+│   │   │   │   │       └───estraverse
+│   │   │   │   ├───esrecurse
+│   │   │   │   │   └───node_modules
+│   │   │   │   │       └───estraverse
+│   │   │   │   ├───estraverse
+│   │   │   │   ├───esutils
+│   │   │   │   │   └───lib
+│   │   │   │   ├───etag
+│   │   │   │   ├───event-emitter
+│   │   │   │   │   ├───benchmark
+│   │   │   │   │   └───test
+│   │   │   │   ├───event-stream
+│   │   │   │   │   ├───examples
+│   │   │   │   │   └───test
+│   │   │   │   │       └───helper
+│   │   │   │   ├───eventemitter3
+│   │   │   │   │   └───umd
+│   │   │   │   ├───exit-hook
+│   │   │   │   ├───ext
+│   │   │   │   │   ├───.github
+│   │   │   │   │   ├───docs
+│   │   │   │   │   │   ├───function
+│   │   │   │   │   │   ├───math
+│   │   │   │   │   │   ├───object
+│   │   │   │   │   │   ├───promise
+│   │   │   │   │   │   ├───string
+│   │   │   │   │   │   ├───string_
+│   │   │   │   │   │   └───thenable_
+│   │   │   │   │   ├───function
+│   │   │   │   │   ├───global-this
+│   │   │   │   │   ├───lib
+│   │   │   │   │   │   └───private
+│   │   │   │   │   ├───math
+│   │   │   │   │   ├───node_modules
+│   │   │   │   │   │   └───type
+│   │   │   │   │   │       ├───array
+│   │   │   │   │   │       ├───array-length
+│   │   │   │   │   │       ├───array-like
+│   │   │   │   │   │       ├───constructor
+│   │   │   │   │   │       ├───date
+│   │   │   │   │   │       ├───docs
+│   │   │   │   │   │       ├───error
+│   │   │   │   │   │       ├───finite
+│   │   │   │   │   │       ├───function
+│   │   │   │   │   │       ├───integer
+│   │   │   │   │   │       ├───iterable
+│   │   │   │   │   │       ├───lib
+│   │   │   │   │   │       │   └───ensure
+│   │   │   │   │   │       ├───map
+│   │   │   │   │   │       ├───natural-number
+│   │   │   │   │   │       ├───number
+│   │   │   │   │   │       ├───object
+│   │   │   │   │   │       ├───plain-function
+│   │   │   │   │   │       ├───plain-object
+│   │   │   │   │   │       ├───promise
+│   │   │   │   │   │       ├───prototype
+│   │   │   │   │   │       ├───reg-exp
+│   │   │   │   │   │       ├───safe-integer
+│   │   │   │   │   │       ├───set
+│   │   │   │   │   │       ├───string
+│   │   │   │   │   │       ├───thenable
+│   │   │   │   │   │       ├───time-value
+│   │   │   │   │   │       └───value
+│   │   │   │   │   ├───object
+│   │   │   │   │   │   └───entries
+│   │   │   │   │   ├───promise
+│   │   │   │   │   ├───string
+│   │   │   │   │   ├───string_
+│   │   │   │   │   │   └───includes
+│   │   │   │   │   ├───test
+│   │   │   │   │   │   ├───function
+│   │   │   │   │   │   ├───global-this
+│   │   │   │   │   │   ├───math
+│   │   │   │   │   │   ├───object
+│   │   │   │   │   │   │   └───entries
+│   │   │   │   │   │   ├───promise
+│   │   │   │   │   │   ├───string
+│   │   │   │   │   │   ├───string_
+│   │   │   │   │   │   │   └───includes
+│   │   │   │   │   │   └───thenable_
+│   │   │   │   │   └───thenable_
+│   │   │   │   ├───fast-levenshtein
+│   │   │   │   ├───faye-websocket
+│   │   │   │   │   └───lib
+│   │   │   │   │       └───faye
+│   │   │   │   │           └───websocket
+│   │   │   │   │               └───api
+│   │   │   │   ├───file-entry-cache
+│   │   │   │   ├───fill-range
+│   │   │   │   ├───finalhandler
+│   │   │   │   ├───flat-cache
+│   │   │   │   │   └───node_modules
+│   │   │   │   │       └───rimraf
+│   │   │   │   ├───follow-redirects
+│   │   │   │   ├───fresh
+│   │   │   │   ├───from
+│   │   │   │   │   └───test
+│   │   │   │   ├───fs.realpath
+│   │   │   │   ├───function-bind
+│   │   │   │   │   └───test
+│   │   │   │   ├───generate-function
+│   │   │   │   ├───generate-object-property
+│   │   │   │   ├───glob
+│   │   │   │   ├───glob-parent
+│   │   │   │   ├───globals
+│   │   │   │   ├───graceful-fs
+│   │   │   │   ├───has
+│   │   │   │   │   ├───src
+│   │   │   │   │   └───test
+│   │   │   │   ├───has-ansi
+│   │   │   │   │   └───node_modules
+│   │   │   │   │       └───ansi-regex
+│   │   │   │   ├───hosted-git-info
+│   │   │   │   ├───http-auth
+│   │   │   │   │   └───src
+│   │   │   │   │       ├───auth
+│   │   │   │   │       └───server
+│   │   │   │   ├───http-errors
+│   │   │   │   │   └───node_modules
+│   │   │   │   │       └───depd
+│   │   │   │   │           └───lib
+│   │   │   │   │               ├───browser
+│   │   │   │   │               └───compat
+│   │   │   │   ├───http-parser-js
+│   │   │   │   ├───http-proxy
+│   │   │   │   │   └───lib
+│   │   │   │   │       └───http-proxy
+│   │   │   │   │           └───passes
+│   │   │   │   ├───http-shutdown
+│   │   │   │   ├───ignore
+│   │   │   │   ├───imurmurhash
+│   │   │   │   ├───indent-string
+│   │   │   │   ├───inflight
+│   │   │   │   ├───inherits
+│   │   │   │   ├───internal-ip
+│   │   │   │   ├───interpret
+│   │   │   │   ├───ip-regex
+│   │   │   │   ├───ipify
+│   │   │   │   │   └───node_modules
+│   │   │   │   │       ├───got
+│   │   │   │   │       ├───lowercase-keys
+│   │   │   │   │       ├───parse-json
+│   │   │   │   │       │   └───vendor
+│   │   │   │   │       ├───prepend-http
+│   │   │   │   │       ├───timed-out
+│   │   │   │   │       └───url-parse-lax
+│   │   │   │   ├───ips
+│   │   │   │   │   ├───bin
+│   │   │   │   │   ├───examples
+│   │   │   │   │   └───test
+│   │   │   │   ├───is-arrayish
+│   │   │   │   ├───is-binary-path
+│   │   │   │   ├───is-core-module
+│   │   │   │   │   └───test
+│   │   │   │   ├───is-extglob
+│   │   │   │   ├───is-finite
+│   │   │   │   ├───is-glob
+│   │   │   │   ├───is-my-ip-valid
+│   │   │   │   │   └───fixtures
+│   │   │   │   ├───is-my-json-valid
+│   │   │   │   ├───is-number
+│   │   │   │   ├───is-plain-obj
+│   │   │   │   ├───is-property
+│   │   │   │   ├───is-redirect
+│   │   │   │   ├───is-resolvable
+│   │   │   │   ├───is-retry-allowed
+│   │   │   │   ├───is-stream
+│   │   │   │   ├───is-utf8
+│   │   │   │   ├───is-wsl
+│   │   │   │   ├───isarray
+│   │   │   │   ├───js-tokens
+│   │   │   │   ├───js-yaml
+│   │   │   │   │   ├───bin
+│   │   │   │   │   ├───dist
+│   │   │   │   │   └───lib
+│   │   │   │   │       └───js-yaml
+│   │   │   │   │           ├───schema
+│   │   │   │   │           └───type
+│   │   │   │   │               └───js
+│   │   │   │   ├───json-stable-stringify
+│   │   │   │   │   ├───example
+│   │   │   │   │   └───test
+│   │   │   │   ├───jsonify
+│   │   │   │   │   ├───lib
+│   │   │   │   │   └───test
+│   │   │   │   ├───jsonpointer
+│   │   │   │   ├───levn
+│   │   │   │   │   └───lib
+│   │   │   │   ├───live-server
+│   │   │   │   ├───lodash
+│   │   │   │   │   └───fp
+│   │   │   │   ├───loud-rejection
+│   │   │   │   ├───map-obj
+│   │   │   │   ├───map-stream
+│   │   │   │   │   ├───examples
+│   │   │   │   │   └───test
+│   │   │   │   ├───meow
+│   │   │   │   ├───mime
+│   │   │   │   │   └───src
+│   │   │   │   ├───mime-db
+│   │   │   │   ├───mime-types
+│   │   │   │   ├───minimatch
+│   │   │   │   ├───minimist
+│   │   │   │   │   ├───example
+│   │   │   │   │   └───test
+│   │   │   │   ├───morgan
+│   │   │   │   ├───ms
+│   │   │   │   ├───natural-compare
+│   │   │   │   ├───negotiator
+│   │   │   │   │   └───lib
+│   │   │   │   ├───next-tick
+│   │   │   │   │   └───test
+│   │   │   │   ├───node-status-codes
+│   │   │   │   ├───normalize-package-data
+│   │   │   │   │   ├───lib
+│   │   │   │   │   └───node_modules
+│   │   │   │   │       └───semver
+│   │   │   │   │           └───bin
+│   │   │   │   ├───normalize-path
+│   │   │   │   ├───number-is-nan
+│   │   │   │   ├───object-assign
+│   │   │   │   ├───on-finished
+│   │   │   │   ├───on-headers
+│   │   │   │   ├───once
+│   │   │   │   ├───opn
+│   │   │   │   ├───optionator
+│   │   │   │   │   └───lib
+│   │   │   │   ├───os-homedir
+│   │   │   │   ├───parseurl
+│   │   │   │   ├───path-is-absolute
+│   │   │   │   ├───path-is-inside
+│   │   │   │   │   └───lib
+│   │   │   │   ├───path-parse
+│   │   │   │   ├───pause-stream
+│   │   │   │   │   └───test
+│   │   │   │   ├───picomatch
+│   │   │   │   │   └───lib
+│   │   │   │   ├───pinkie
+│   │   │   │   ├───pinkie-promise
+│   │   │   │   ├───pluralize
+│   │   │   │   ├───prelude-ls
+│   │   │   │   │   └───lib
+│   │   │   │   ├───process-nextick-args
+│   │   │   │   ├───progress
+│   │   │   │   │   └───lib
+│   │   │   │   ├───proxy-middleware
+│   │   │   │   ├───range-parser
+│   │   │   │   ├───read-all-stream
+│   │   │   │   ├───read-pkg-up
+│   │   │   │   │   └───node_modules
+│   │   │   │   │       ├───find-up
+│   │   │   │   │       ├───load-json-file
+│   │   │   │   │       ├───parse-json
+│   │   │   │   │       │   └───vendor
+│   │   │   │   │       ├───path-exists
+│   │   │   │   │       ├───path-type
+│   │   │   │   │       ├───pify
+│   │   │   │   │       ├───read-pkg
+│   │   │   │   │       └───strip-bom
+│   │   │   │   ├───readable-stream
+│   │   │   │   │   ├───doc
+│   │   │   │   │   │   └───wg-meetings
+│   │   │   │   │   └───lib
+│   │   │   │   │       └───internal
+│   │   │   │   │           └───streams
+│   │   │   │   ├───readdirp
+│   │   │   │   ├───readline2
+│   │   │   │   │   └───node_modules
+│   │   │   │   │       ├───is-fullwidth-code-point
+│   │   │   │   │       └───mute-stream
+│   │   │   │   │           └───test
+│   │   │   │   ├───rechoir
+│   │   │   │   │   └───lib
+│   │   │   │   ├───redent
+│   │   │   │   ├───repeating
+│   │   │   │   ├───require-uncached
+│   │   │   │   │   └───node_modules
+│   │   │   │   │       ├───caller-path
+│   │   │   │   │       ├───callsites
+│   │   │   │   │       └───resolve-from
+│   │   │   │   ├───requires-port
+│   │   │   │   ├───resolve
+│   │   │   │   │   ├───.github
+│   │   │   │   │   ├───bin
+│   │   │   │   │   ├───example
+│   │   │   │   │   ├───lib
+│   │   │   │   │   └───test
+│   │   │   │   │       ├───dotdot
+│   │   │   │   │       │   └───abc
+│   │   │   │   │       ├───module_dir
+│   │   │   │   │       │   ├───xmodules
+│   │   │   │   │       │   │   └───aaa
+│   │   │   │   │       │   ├───ymodules
+│   │   │   │   │       │   │   └───aaa
+│   │   │   │   │       │   └───zmodules
+│   │   │   │   │       │       └───bbb
+│   │   │   │   │       ├───node_path
+│   │   │   │   │       │   ├───x
+│   │   │   │   │       │   │   ├───aaa
+│   │   │   │   │       │   │   └───ccc
+│   │   │   │   │       │   └───y
+│   │   │   │   │       │       ├───bbb
+│   │   │   │   │       │       └───ccc
+│   │   │   │   │       ├───pathfilter
+│   │   │   │   │       │   └───deep_ref
+│   │   │   │   │       ├───precedence
+│   │   │   │   │       │   ├───aaa
+│   │   │   │   │       │   └───bbb
+│   │   │   │   │       ├───resolver
+│   │   │   │   │       │   ├───baz
+│   │   │   │   │       │   ├───browser_field
+│   │   │   │   │       │   ├───dot_main
+│   │   │   │   │       │   ├───dot_slash_main
+│   │   │   │   │       │   ├───incorrect_main
+│   │   │   │   │       │   ├───invalid_main
+│   │   │   │   │       │   ├───malformed_package_json
+│   │   │   │   │       │   ├───multirepo
+│   │   │   │   │       │   │   └───packages
+│   │   │   │   │       │   │       ├───package-a
+│   │   │   │   │       │   │       └───package-b
+│   │   │   │   │       │   ├───nested_symlinks
+│   │   │   │   │       │   │   └───mylib
+│   │   │   │   │       │   ├───other_path
+│   │   │   │   │       │   │   └───lib
+│   │   │   │   │       │   ├───quux
+│   │   │   │   │       │   │   └───foo
+│   │   │   │   │       │   ├───same_names
+│   │   │   │   │       │   │   └───foo
+│   │   │   │   │       │   ├───symlinked
+│   │   │   │   │       │   │   ├───package
+│   │   │   │   │       │   │   └───_
+│   │   │   │   │       │   │       ├───node_modules
+│   │   │   │   │       │   │       └───symlink_target
+│   │   │   │   │       │   └───without_basedir
+│   │   │   │   │       └───shadowed_core
+│   │   │   │   │           └───node_modules
+│   │   │   │   │               └───util
+│   │   │   │   ├───rx-lite
+│   │   │   │   ├───safe-buffer
+│   │   │   │   ├───send
+│   │   │   │   │   └───node_modules
+│   │   │   │   │       ├───depd
+│   │   │   │   │       │   └───lib
+│   │   │   │   │       │       ├───browser
+│   │   │   │   │       │       └───compat
+│   │   │   │   │       └───ms
+│   │   │   │   ├───serve-index
+│   │   │   │   │   ├───node_modules
+│   │   │   │   │   │   ├───depd
+│   │   │   │   │   │   │   └───lib
+│   │   │   │   │   │   │       ├───browser
+│   │   │   │   │   │   │       └───compat
+│   │   │   │   │   │   ├───http-errors
+│   │   │   │   │   │   ├───inherits
+│   │   │   │   │   │   └───setprototypeof
+│   │   │   │   │   └───public
+│   │   │   │   │       └───icons
+│   │   │   │   ├───setprototypeof
+│   │   │   │   │   └───test
+│   │   │   │   ├───shelljs
+│   │   │   │   │   ├───bin
+│   │   │   │   │   └───src
+│   │   │   │   ├───signal-exit
+│   │   │   │   ├───slice-ansi
+│   │   │   │   ├───spdx-correct
+│   │   │   │   ├───spdx-exceptions
+│   │   │   │   ├───spdx-expression-parse
+│   │   │   │   ├───spdx-license-ids
+│   │   │   │   ├───split
+│   │   │   │   │   ├───examples
+│   │   │   │   │   └───test
+│   │   │   │   ├───sprintf-js
+│   │   │   │   │   ├───demo
+│   │   │   │   │   ├───dist
+│   │   │   │   │   ├───src
+│   │   │   │   │   └───test
+│   │   │   │   ├───statuses
+│   │   │   │   ├───stream-combiner
+│   │   │   │   │   └───test
+│   │   │   │   ├───string_decoder
+│   │   │   │   │   └───lib
+│   │   │   │   ├───strip-bom
+│   │   │   │   ├───strip-indent
+│   │   │   │   │   └───node_modules
+│   │   │   │   │       └───get-stdin
+│   │   │   │   ├───strip-json-comments
+│   │   │   │   ├───supports-preserve-symlinks-flag
+│   │   │   │   │   ├───.github
+│   │   │   │   │   └───test
+│   │   │   │   ├───table
+│   │   │   │   │   ├───dist
+│   │   │   │   │   │   └───schemas
+│   │   │   │   │   ├───node_modules
+│   │   │   │   │   │   ├───ansi-regex
+│   │   │   │   │   │   ├───ansi-styles
+│   │   │   │   │   │   ├───chalk
+│   │   │   │   │   │   ├───is-fullwidth-code-point
+│   │   │   │   │   │   ├───string-width
+│   │   │   │   │   │   │   └───node_modules
+│   │   │   │   │   │   │       ├───ansi-regex
+│   │   │   │   │   │   │       └───strip-ansi
+│   │   │   │   │   │   ├───strip-ansi
+│   │   │   │   │   │   └───supports-color
+│   │   │   │   │   └───test
+│   │   │   │   │       └───README
+│   │   │   │   │           └───usage
+│   │   │   │   ├───text-table
+│   │   │   │   │   ├───example
+│   │   │   │   │   └───test
+│   │   │   │   ├───through
+│   │   │   │   │   └───test
+│   │   │   │   ├───to-regex-range
+│   │   │   │   ├───toidentifier
+│   │   │   │   ├───trim-newlines
+│   │   │   │   ├───type
+│   │   │   │   │   ├───array
+│   │   │   │   │   ├───array-length
+│   │   │   │   │   ├───array-like
+│   │   │   │   │   ├───date
+│   │   │   │   │   ├───error
+│   │   │   │   │   ├───finite
+│   │   │   │   │   ├───function
+│   │   │   │   │   ├───integer
+│   │   │   │   │   ├───iterable
+│   │   │   │   │   ├───lib
+│   │   │   │   │   ├───natural-number
+│   │   │   │   │   ├───number
+│   │   │   │   │   ├───object
+│   │   │   │   │   ├───plain-function
+│   │   │   │   │   ├───plain-object
+│   │   │   │   │   ├───promise
+│   │   │   │   │   ├───prototype
+│   │   │   │   │   ├───reg-exp
+│   │   │   │   │   ├───safe-integer
+│   │   │   │   │   ├───string
+│   │   │   │   │   ├───test
+│   │   │   │   │   │   ├───array
+│   │   │   │   │   │   ├───array-length
+│   │   │   │   │   │   ├───array-like
+│   │   │   │   │   │   ├───date
+│   │   │   │   │   │   ├───error
+│   │   │   │   │   │   ├───finite
+│   │   │   │   │   │   ├───function
+│   │   │   │   │   │   ├───integer
+│   │   │   │   │   │   ├───iterable
+│   │   │   │   │   │   ├───lib
+│   │   │   │   │   │   ├───natural-number
+│   │   │   │   │   │   ├───number
+│   │   │   │   │   │   ├───object
+│   │   │   │   │   │   ├───plain-function
+│   │   │   │   │   │   ├───plain-object
+│   │   │   │   │   │   ├───promise
+│   │   │   │   │   │   ├───prototype
+│   │   │   │   │   │   ├───reg-exp
+│   │   │   │   │   │   ├───safe-integer
+│   │   │   │   │   │   ├───string
+│   │   │   │   │   │   ├───thenable
+│   │   │   │   │   │   ├───time-value
+│   │   │   │   │   │   ├───value
+│   │   │   │   │   │   └───_lib
+│   │   │   │   │   ├───thenable
+│   │   │   │   │   ├───time-value
+│   │   │   │   │   └───value
+│   │   │   │   ├───type-check
+│   │   │   │   │   └───lib
+│   │   │   │   ├───typedarray
+│   │   │   │   │   ├───example
+│   │   │   │   │   └───test
+│   │   │   │   │       └───server
+│   │   │   │   ├───unix-crypt-td-js
+│   │   │   │   │   ├───src
+│   │   │   │   │   └───test
+│   │   │   │   ├───unpipe
+│   │   │   │   ├───unzip-response
+│   │   │   │   ├───user-home
+│   │   │   │   ├───util-deprecate
+│   │   │   │   ├───utils-merge
+│   │   │   │   ├───uuid
+│   │   │   │   │   ├───bin
+│   │   │   │   │   └───lib
+│   │   │   │   ├───validate-npm-package-license
+│   │   │   │   ├───vary
+│   │   │   │   ├───vsls
+│   │   │   │   ├───websocket-driver
+│   │   │   │   │   └───lib
+│   │   │   │   │       └───websocket
+│   │   │   │   │           └───driver
+│   │   │   │   │               └───hybi
+│   │   │   │   ├───websocket-extensions
+│   │   │   │   │   └───lib
+│   │   │   │   │       └───pipeline
+│   │   │   │   ├───word-wrap
+│   │   │   │   ├───wrappy
+│   │   │   │   ├───write
+│   │   │   │   │   └───node_modules
+│   │   │   │   │       └───mkdirp
+│   │   │   │   │           └───bin
+│   │   │   │   └───xtend
+│   │   │   └───out
+│   │   │       └───src
+│   │   │           └───announcement
+│   │   ├───sidthesloth.html5-boilerplate-1.1.1
+│   │   │   ├───.vscode
+│   │   │   ├───images
+│   │   │   └───snippets
+│   │   ├───vscjava.vscode-java-debug-0.54.0
+│   │   │   ├───dist
+│   │   │   ├───images
+│   │   │   │   └───commands
+│   │   │   └───server
+│   │   ├───vscjava.vscode-java-dependency-0.23.1
+│   │   │   ├───dist
+│   │   │   ├───icons
+│   │   │   │   ├───dark
+│   │   │   │   └───light
+│   │   │   ├───server
+│   │   │   └───templates
+│   │   │       └───invisible-project
+│   │   │           ├───.vscode
+│   │   │           └───src
+│   │   └───xabikos.javascriptsnippets-1.8.0
+│   │       ├───images
+│   │       └───snippets
+│   └───Java learning
+├───3D Objects
+├───Cisco Packet Tracer 8.2.1
+│   ├───extensions
+│   ├───logs
+│   │   └───ActivitySequencer
+│   ├───saves
+│   │   └───ActivitySequencer
+│   │       └───temp
+│   └───templates
+├───Contacts
+├───Creative Cloud Files
+├───demoone
+│   ├───events
+│   ├───hello_world
+│   └───tests
+│       ├───integration
+│       └───unit
+├───Desktop
+│   └───Selenium
+│       ├───.metadata
+│       │   └───.plugins
+│       │       ├───org.eclipse.buildship.core
+│       │       ├───org.eclipse.core.resources
+│       │       │   ├───.history
+│       │       │   │   ├───14
+│       │       │   │   ├───43
+│       │       │   │   ├───69
+│       │       │   │   ├───6c
+│       │       │   │   ├───70
+│       │       │   │   ├───76
+│       │       │   │   ├───78
+│       │       │   │   ├───84
+│       │       │   │   ├───8b
+│       │       │   │   ├───94
+│       │       │   │   ├───a8
+│       │       │   │   ├───b6
+│       │       │   │   ├───bc
+│       │       │   │   ├───e0
+│       │       │   │   ├───f0
+│       │       │   │   └───fe
+│       │       │   ├───.projects
+│       │       │   │   ├───.org.eclipse.egit.core.cmp
+│       │       │   │   └───SeleniumDemo1
+│       │       │   │       ├───.indexes
+│       │       │   │       │   ├───af
+│       │       │   │       │   └───e4
+│       │       │   │       │       └───28
+│       │       │   │       └───org.eclipse.jdt.core
+│       │       │   ├───.root
+│       │       │   │   └───.indexes
+│       │       │   └───.safetable
+│       │       ├───org.eclipse.core.runtime
+│       │       │   └───.settings
+│       │       ├───org.eclipse.debug.core
+│       │       │   └───.launches
+│       │       ├───org.eclipse.debug.ui
+│       │       ├───org.eclipse.e4.workbench
+│       │       ├───org.eclipse.egit.core
+│       │       │   └───.org.eclipse.egit.core.cmp
+│       │       │       └───.settings
+│       │       ├───org.eclipse.emf.common.ui
+│       │       ├───org.eclipse.jdt.core
+│       │       ├───org.eclipse.jdt.launching
+│       │       ├───org.eclipse.jdt.ui
+│       │       ├───org.eclipse.ltk.core.refactoring
+│       │       │   └───.refactorings
+│       │       │       └───.workspace
+│       │       │           └───2022
+│       │       │               └───12
+│       │       │                   └───51
+│       │       ├───org.eclipse.ltk.ui.refactoring
+│       │       ├───org.eclipse.m2e.core
+│       │       ├───org.eclipse.m2e.logback.configuration
+│       │       ├───org.eclipse.oomph.setup
+│       │       ├───org.eclipse.oomph.setup.ui
+│       │       ├───org.eclipse.tips.ide
+│       │       ├───org.eclipse.tm.terminal.view.ui
+│       │       ├───org.eclipse.ui.ide
+│       │       ├───org.eclipse.ui.intro
+│       │       ├───org.eclipse.ui.workbench
+│       │       └───org.eclipse.userstorage.oauth
+│       ├───chromedriver_win32
+│       ├───selenium-java-4.5.3
+│       │   └───lib
+│       └───SeleniumDemo1
+│           ├───.settings
+│           ├───bin
+│           │   └───Hp
+│           └───src
+│               └───Hp
+├───Documents
+│   └───srikanth
+│       └───Git
+│           └───etc
+├───Downloads
+│   └───www.4MovieRulz.pl - Mirzapur (2020) 1080p S-02 Ep-[01-10] HDRip (DD5.1-192Kbps) [Tel+Tam+Hin] 6.2GB ESub
+│       └───New folder
+├───Favorites
+│   ├───HP
+│   └───Links
+├───IBA_IOAPDATA
+│   └───2021-09-13_08-02-23
+│       ├───chrome_profile_ion
+│       │   ├───Default
+│       │   │   ├───Extensions
+│       │   │   │   ├───aapocclcgogkmnckokdopfmhonfmgoek
+│       │   │   │   │   └───0.10_0
+│       │   │   │   │       ├───_locales
+│       │   │   │   │       │   ├───ar
+│       │   │   │   │       │   ├───bg
+│       │   │   │   │       │   ├───ca
+│       │   │   │   │       │   ├───cs
+│       │   │   │   │       │   ├───da
+│       │   │   │   │       │   ├───de
+│       │   │   │   │       │   ├───el
+│       │   │   │   │       │   ├───en_GB
+│       │   │   │   │       │   ├───en_US
+│       │   │   │   │       │   ├───es
+│       │   │   │   │       │   ├───es_419
+│       │   │   │   │       │   ├───et
+│       │   │   │   │       │   ├───fi
+│       │   │   │   │       │   ├───fil
+│       │   │   │   │       │   ├───fr
+│       │   │   │   │       │   ├───he
+│       │   │   │   │       │   ├───hi
+│       │   │   │   │       │   ├───hu
+│       │   │   │   │       │   ├───id
+│       │   │   │   │       │   ├───it
+│       │   │   │   │       │   ├───ja
+│       │   │   │   │       │   ├───ko
+│       │   │   │   │       │   ├───lt
+│       │   │   │   │       │   ├───lv
+│       │   │   │   │       │   ├───ms
+│       │   │   │   │       │   ├───nl
+│       │   │   │   │       │   ├───no
+│       │   │   │   │       │   ├───pl
+│       │   │   │   │       │   ├───pt_BR
+│       │   │   │   │       │   ├───pt_PT
+│       │   │   │   │       │   ├───ro
+│       │   │   │   │       │   ├───ru
+│       │   │   │   │       │   ├───sk
+│       │   │   │   │       │   ├───sl
+│       │   │   │   │       │   ├───sr
+│       │   │   │   │       │   ├───sv
+│       │   │   │   │       │   ├───th
+│       │   │   │   │       │   ├───tr
+│       │   │   │   │       │   ├───uk
+│       │   │   │   │       │   ├───vi
+│       │   │   │   │       │   ├───zh_CN
+│       │   │   │   │       │   └───zh_TW
+│       │   │   │   │       └───_metadata
+│       │   │   │   ├───aohghmighlieiainnegkcijnfilokake
+│       │   │   │   │   └───0.10_0
+│       │   │   │   │       ├───_locales
+│       │   │   │   │       │   ├───ar
+│       │   │   │   │       │   ├───bg
+│       │   │   │   │       │   ├───ca
+│       │   │   │   │       │   ├───cs
+│       │   │   │   │       │   ├───da
+│       │   │   │   │       │   ├───de
+│       │   │   │   │       │   ├───el
+│       │   │   │   │       │   ├───en_GB
+│       │   │   │   │       │   ├───en_US
+│       │   │   │   │       │   ├───es
+│       │   │   │   │       │   ├───es_419
+│       │   │   │   │       │   ├───et
+│       │   │   │   │       │   ├───fi
+│       │   │   │   │       │   ├───fil
+│       │   │   │   │       │   ├───fr
+│       │   │   │   │       │   ├───he
+│       │   │   │   │       │   ├───hi
+│       │   │   │   │       │   ├───hu
+│       │   │   │   │       │   ├───id
+│       │   │   │   │       │   ├───it
+│       │   │   │   │       │   ├───ja
+│       │   │   │   │       │   ├───ko
+│       │   │   │   │       │   ├───lt
+│       │   │   │   │       │   ├───lv
+│       │   │   │   │       │   ├───ms
+│       │   │   │   │       │   ├───nl
+│       │   │   │   │       │   ├───no
+│       │   │   │   │       │   ├───pl
+│       │   │   │   │       │   ├───pt_BR
+│       │   │   │   │       │   ├───pt_PT
+│       │   │   │   │       │   ├───ro
+│       │   │   │   │       │   ├───ru
+│       │   │   │   │       │   ├───sk
+│       │   │   │   │       │   ├───sl
+│       │   │   │   │       │   ├───sr
+│       │   │   │   │       │   ├───sv
+│       │   │   │   │       │   ├───th
+│       │   │   │   │       │   ├───tr
+│       │   │   │   │       │   ├───uk
+│       │   │   │   │       │   ├───vi
+│       │   │   │   │       │   ├───zh_CN
+│       │   │   │   │       │   └───zh_TW
+│       │   │   │   │       └───_metadata
+│       │   │   │   ├───apdfllckaahabafndbhieahigkjlhalf
+│       │   │   │   │   └───14.5_0
+│       │   │   │   │       ├───_locales
+│       │   │   │   │       │   ├───ar
+│       │   │   │   │       │   ├───bg
+│       │   │   │   │       │   ├───ca
+│       │   │   │   │       │   ├───cs
+│       │   │   │   │       │   ├───da
+│       │   │   │   │       │   ├───de
+│       │   │   │   │       │   ├───el
+│       │   │   │   │       │   ├───en_GB
+│       │   │   │   │       │   ├───en_US
+│       │   │   │   │       │   ├───es
+│       │   │   │   │       │   ├───es_419
+│       │   │   │   │       │   ├───et
+│       │   │   │   │       │   ├───eu
+│       │   │   │   │       │   ├───fi
+│       │   │   │   │       │   ├───fil
+│       │   │   │   │       │   ├───fr
+│       │   │   │   │       │   ├───he
+│       │   │   │   │       │   ├───hi
+│       │   │   │   │       │   ├───hr
+│       │   │   │   │       │   ├───hu
+│       │   │   │   │       │   ├───id
+│       │   │   │   │       │   ├───it
+│       │   │   │   │       │   ├───ja
+│       │   │   │   │       │   ├───ko
+│       │   │   │   │       │   ├───lt
+│       │   │   │   │       │   ├───lv
+│       │   │   │   │       │   ├───ms
+│       │   │   │   │       │   ├───nl
+│       │   │   │   │       │   ├───no
+│       │   │   │   │       │   ├───pl
+│       │   │   │   │       │   ├───pt_BR
+│       │   │   │   │       │   ├───pt_PT
+│       │   │   │   │       │   ├───ro
+│       │   │   │   │       │   ├───ru
+│       │   │   │   │       │   ├───sk
+│       │   │   │   │       │   ├───sl
+│       │   │   │   │       │   ├───sr
+│       │   │   │   │       │   ├───sv
+│       │   │   │   │       │   ├───th
+│       │   │   │   │       │   ├───tr
+│       │   │   │   │       │   ├───uk
+│       │   │   │   │       │   ├───vi
+│       │   │   │   │       │   ├───zh_CN
+│       │   │   │   │       │   └───zh_TW
+│       │   │   │   │       └───_metadata
+│       │   │   │   ├───blpcfgokakmgnkcojhhkbfbldkacnbeo
+│       │   │   │   │   └───4.2.8_0
+│       │   │   │   │       ├───_locales
+│       │   │   │   │       │   ├───ar
+│       │   │   │   │       │   ├───bg
+│       │   │   │   │       │   ├───ca
+│       │   │   │   │       │   ├───cs
+│       │   │   │   │       │   ├───da
+│       │   │   │   │       │   ├───de
+│       │   │   │   │       │   ├───el
+│       │   │   │   │       │   ├───en
+│       │   │   │   │       │   ├───es
+│       │   │   │   │       │   ├───fi
+│       │   │   │   │       │   ├───fil
+│       │   │   │   │       │   ├───fr
+│       │   │   │   │       │   ├───he
+│       │   │   │   │       │   ├───hi
+│       │   │   │   │       │   ├───hr
+│       │   │   │   │       │   ├───hu
+│       │   │   │   │       │   ├───id
+│       │   │   │   │       │   ├───it
+│       │   │   │   │       │   ├───ja
+│       │   │   │   │       │   ├───ko
+│       │   │   │   │       │   ├───lt
+│       │   │   │   │       │   ├───lv
+│       │   │   │   │       │   ├───nl
+│       │   │   │   │       │   ├───no
+│       │   │   │   │       │   ├───pl
+│       │   │   │   │       │   ├───pt_BR
+│       │   │   │   │       │   ├───pt_PT
+│       │   │   │   │       │   ├───ro
+│       │   │   │   │       │   ├───ru
+│       │   │   │   │       │   ├───sk
+│       │   │   │   │       │   ├───sl
+│       │   │   │   │       │   ├───sr
+│       │   │   │   │       │   ├───sv
+│       │   │   │   │       │   ├───th
+│       │   │   │   │       │   ├───tr
+│       │   │   │   │       │   ├───uk
+│       │   │   │   │       │   ├───vi
+│       │   │   │   │       │   ├───zh_CN
+│       │   │   │   │       │   └───zh_TW
+│       │   │   │   │       └───_metadata
+│       │   │   │   ├───felcaaldnbdncclmgdcncolpebgiejap
+│       │   │   │   │   └───1.2_0
+│       │   │   │   │       ├───_locales
+│       │   │   │   │       │   ├───ar
+│       │   │   │   │       │   ├───bg
+│       │   │   │   │       │   ├───ca
+│       │   │   │   │       │   ├───cs
+│       │   │   │   │       │   ├───da
+│       │   │   │   │       │   ├───de
+│       │   │   │   │       │   ├───el
+│       │   │   │   │       │   ├───en_GB
+│       │   │   │   │       │   ├───en_US
+│       │   │   │   │       │   ├───es
+│       │   │   │   │       │   ├───es_419
+│       │   │   │   │       │   ├───et
+│       │   │   │   │       │   ├───fi
+│       │   │   │   │       │   ├───fil
+│       │   │   │   │       │   ├───fr
+│       │   │   │   │       │   ├───he
+│       │   │   │   │       │   ├───hi
+│       │   │   │   │       │   ├───hu
+│       │   │   │   │       │   ├───id
+│       │   │   │   │       │   ├───it
+│       │   │   │   │       │   ├───ja
+│       │   │   │   │       │   ├───ko
+│       │   │   │   │       │   ├───lt
+│       │   │   │   │       │   ├───lv
+│       │   │   │   │       │   ├───ms
+│       │   │   │   │       │   ├───nl
+│       │   │   │   │       │   ├───no
+│       │   │   │   │       │   ├───pl
+│       │   │   │   │       │   ├───pt_BR
+│       │   │   │   │       │   ├───pt_PT
+│       │   │   │   │       │   ├───ro
+│       │   │   │   │       │   ├───ru
+│       │   │   │   │       │   ├───sk
+│       │   │   │   │       │   ├───sl
+│       │   │   │   │       │   ├───sr
+│       │   │   │   │       │   ├───sv
+│       │   │   │   │       │   ├───th
+│       │   │   │   │       │   ├───tr
+│       │   │   │   │       │   ├───uk
+│       │   │   │   │       │   ├───vi
+│       │   │   │   │       │   ├───zh_CN
+│       │   │   │   │       │   └───zh_TW
+│       │   │   │   │       └───_metadata
+│       │   │   │   ├───fheoggkfdfchfphceeifdbepaooicaho
+│       │   │   │   │   └───8.1.0.1356_0
+│       │   │   │   │       ├───css
+│       │   │   │   │       ├───fonts
+│       │   │   │   │       ├───html
+│       │   │   │   │       │   ├───balloon_message
+│       │   │   │   │       │   ├───sidebar
+│       │   │   │   │       │   └───topbar
+│       │   │   │   │       ├───images
+│       │   │   │   │       │   ├───action_panel
+│       │   │   │   │       │   ├───advanced_protection_signals
+│       │   │   │   │       │   ├───annotation
+│       │   │   │   │       │   ├───balloon
+│       │   │   │   │       │   ├───banner
+│       │   │   │   │       │   ├───browser_action
+│       │   │   │   │       │   ├───crypto
+│       │   │   │   │       │   │   ├───banners
+│       │   │   │   │       │   │   └───cryptojack-signs-icons
+│       │   │   │   │       │   ├───dws
+│       │   │   │   │       │   │   └───animations
+│       │   │   │   │       │   ├───find_similar_pages
+│       │   │   │   │       │   ├───how_it_works
+│       │   │   │   │       │   ├───iframe
+│       │   │   │   │       │   ├───overlay
+│       │   │   │   │       │   ├───settings
+│       │   │   │   │       │   ├───sidebar
+│       │   │   │   │       │   ├───site_status
+│       │   │   │   │       │   ├───socialmedia
+│       │   │   │   │       │   ├───statistics
+│       │   │   │   │       │   ├───survey
+│       │   │   │   │       │   └───web_advisor
+│       │   │   │   │       ├───json
+│       │   │   │   │       ├───_locales
+│       │   │   │   │       │   ├───cs
+│       │   │   │   │       │   ├───da
+│       │   │   │   │       │   ├───de
+│       │   │   │   │       │   ├───el
+│       │   │   │   │       │   ├───en
+│       │   │   │   │       │   ├───es
+│       │   │   │   │       │   ├───es_419
+│       │   │   │   │       │   ├───fi
+│       │   │   │   │       │   ├───fr
+│       │   │   │   │       │   ├───fr_CA
+│       │   │   │   │       │   ├───hr
+│       │   │   │   │       │   ├───hu
+│       │   │   │   │       │   ├───it
+│       │   │   │   │       │   ├───ja
+│       │   │   │   │       │   ├───ko
+│       │   │   │   │       │   ├───nb
+│       │   │   │   │       │   ├───nl
+│       │   │   │   │       │   ├───pl
+│       │   │   │   │       │   ├───pt_BR
+│       │   │   │   │       │   ├───pt_PT
+│       │   │   │   │       │   ├───ru
+│       │   │   │   │       │   ├───sk
+│       │   │   │   │       │   ├───sr
+│       │   │   │   │       │   ├───sv
+│       │   │   │   │       │   ├───tr
+│       │   │   │   │       │   ├───zh_CN
+│       │   │   │   │       │   └───zh_TW
+│       │   │   │   │       └───_metadata
+│       │   │   │   ├───ghbmnnjooekpmoecnnnilnnbdlolhkhi
+│       │   │   │   │   └───1.31.0_0
+│       │   │   │   │       ├───_locales
+│       │   │   │   │       │   ├───af
+│       │   │   │   │       │   ├───am
+│       │   │   │   │       │   ├───ar
+│       │   │   │   │       │   ├───az
+│       │   │   │   │       │   ├───be
+│       │   │   │   │       │   ├───bg
+│       │   │   │   │       │   ├───bn
+│       │   │   │   │       │   ├───ca
+│       │   │   │   │       │   ├───cs
+│       │   │   │   │       │   ├───cy
+│       │   │   │   │       │   ├───da
+│       │   │   │   │       │   ├───de
+│       │   │   │   │       │   ├───el
+│       │   │   │   │       │   ├───en
+│       │   │   │   │       │   ├───en_CA
+│       │   │   │   │       │   ├───en_GB
+│       │   │   │   │       │   ├───en_US
+│       │   │   │   │       │   ├───es
+│       │   │   │   │       │   ├───es_419
+│       │   │   │   │       │   ├───et
+│       │   │   │   │       │   ├───eu
+│       │   │   │   │       │   ├───fa
+│       │   │   │   │       │   ├───fi
+│       │   │   │   │       │   ├───fil
+│       │   │   │   │       │   ├───fr
+│       │   │   │   │       │   ├───fr_CA
+│       │   │   │   │       │   ├───gl
+│       │   │   │   │       │   ├───gu
+│       │   │   │   │       │   ├───hi
+│       │   │   │   │       │   ├───hr
+│       │   │   │   │       │   ├───hu
+│       │   │   │   │       │   ├───hy
+│       │   │   │   │       │   ├───id
+│       │   │   │   │       │   ├───is
+│       │   │   │   │       │   ├───it
+│       │   │   │   │       │   ├───iw
+│       │   │   │   │       │   ├───ja
+│       │   │   │   │       │   ├───ka
+│       │   │   │   │       │   ├───kk
+│       │   │   │   │       │   ├───km
+│       │   │   │   │       │   ├───kn
+│       │   │   │   │       │   ├───ko
+│       │   │   │   │       │   ├───lo
+│       │   │   │   │       │   ├───lt
+│       │   │   │   │       │   ├───lv
+│       │   │   │   │       │   ├───ml
+│       │   │   │   │       │   ├───mn
+│       │   │   │   │       │   ├───mr
+│       │   │   │   │       │   ├───ms
+│       │   │   │   │       │   ├───my
+│       │   │   │   │       │   ├───ne
+│       │   │   │   │       │   ├───nl
+│       │   │   │   │       │   ├───no
+│       │   │   │   │       │   ├───pa
+│       │   │   │   │       │   ├───pl
+│       │   │   │   │       │   ├───pt_BR
+│       │   │   │   │       │   ├───pt_PT
+│       │   │   │   │       │   ├───ro
+│       │   │   │   │       │   ├───ru
+│       │   │   │   │       │   ├───si
+│       │   │   │   │       │   ├───sk
+│       │   │   │   │       │   ├───sl
+│       │   │   │   │       │   ├───sr
+│       │   │   │   │       │   ├───sv
+│       │   │   │   │       │   ├───sw
+│       │   │   │   │       │   ├───ta
+│       │   │   │   │       │   ├───te
+│       │   │   │   │       │   ├───th
+│       │   │   │   │       │   ├───tr
+│       │   │   │   │       │   ├───uk
+│       │   │   │   │       │   ├───ur
+│       │   │   │   │       │   ├───vi
+│       │   │   │   │       │   ├───zh_CN
+│       │   │   │   │       │   ├───zh_HK
+│       │   │   │   │       │   ├───zh_TW
+│       │   │   │   │       │   └───zu
+│       │   │   │   │       └───_metadata
+│       │   │   │   ├───nmmhkkegccagdldgiimedpiccmgmieda
+│       │   │   │   │   └───1.0.0.6_0
+│       │   │   │   │       ├───css
+│       │   │   │   │       ├───html
+│       │   │   │   │       ├───images
+│       │   │   │   │       ├───_locales
+│       │   │   │   │       │   ├───bg
+│       │   │   │   │       │   ├───ca
+│       │   │   │   │       │   ├───cs
+│       │   │   │   │       │   ├───da
+│       │   │   │   │       │   ├───de
+│       │   │   │   │       │   ├───el
+│       │   │   │   │       │   ├───en
+│       │   │   │   │       │   ├───en_GB
+│       │   │   │   │       │   ├───es
+│       │   │   │   │       │   ├───es_419
+│       │   │   │   │       │   ├───et
+│       │   │   │   │       │   ├───fi
+│       │   │   │   │       │   ├───fil
+│       │   │   │   │       │   ├───fr
+│       │   │   │   │       │   ├───hi
+│       │   │   │   │       │   ├───hr
+│       │   │   │   │       │   ├───hu
+│       │   │   │   │       │   ├───id
+│       │   │   │   │       │   ├───it
+│       │   │   │   │       │   ├───ja
+│       │   │   │   │       │   ├───ko
+│       │   │   │   │       │   ├───lt
+│       │   │   │   │       │   ├───lv
+│       │   │   │   │       │   ├───nb
+│       │   │   │   │       │   ├───nl
+│       │   │   │   │       │   ├───pl
+│       │   │   │   │       │   ├───pt_BR
+│       │   │   │   │       │   ├───pt_PT
+│       │   │   │   │       │   ├───ro
+│       │   │   │   │       │   ├───ru
+│       │   │   │   │       │   ├───sk
+│       │   │   │   │       │   ├───sl
+│       │   │   │   │       │   ├───sr
+│       │   │   │   │       │   ├───sv
+│       │   │   │   │       │   ├───th
+│       │   │   │   │       │   ├───tr
+│       │   │   │   │       │   ├───uk
+│       │   │   │   │       │   ├───vi
+│       │   │   │   │       │   ├───zh_CN
+│       │   │   │   │       │   └───zh_TW
+│       │   │   │   │       └───_metadata
+│       │   │   │   └───pjkljhegncpnkpknbcohdijeoejaedia
+│       │   │   │       └───8.3_0
+│       │   │   │           ├───_locales
+│       │   │   │           │   ├───ar
+│       │   │   │           │   ├───bg
+│       │   │   │           │   ├───ca
+│       │   │   │           │   ├───cs
+│       │   │   │           │   ├───da
+│       │   │   │           │   ├───de
+│       │   │   │           │   ├───el
+│       │   │   │           │   ├───en
+│       │   │   │           │   ├───es
+│       │   │   │           │   ├───fi
+│       │   │   │           │   ├───fil
+│       │   │   │           │   ├───fr
+│       │   │   │           │   ├───hi
+│       │   │   │           │   ├───hr
+│       │   │   │           │   ├───hu
+│       │   │   │           │   ├───id
+│       │   │   │           │   ├───it
+│       │   │   │           │   ├───ja
+│       │   │   │           │   ├───ko
+│       │   │   │           │   ├───lt
+│       │   │   │           │   ├───lv
+│       │   │   │           │   ├───nl
+│       │   │   │           │   ├───no
+│       │   │   │           │   ├───pl
+│       │   │   │           │   ├───pt_BR
+│       │   │   │           │   ├───pt_PT
+│       │   │   │           │   ├───ro
+│       │   │   │           │   ├───ru
+│       │   │   │           │   ├───se
+│       │   │   │           │   ├───sk
+│       │   │   │           │   ├───sl
+│       │   │   │           │   ├───sr
+│       │   │   │           │   ├───th
+│       │   │   │           │   ├───tr
+│       │   │   │           │   ├───uk
+│       │   │   │           │   ├───vi
+│       │   │   │           │   ├───zh_CN
+│       │   │   │           │   └───zh_TW
+│       │   │   │           └───_metadata
+│       │   │   ├───Feature Engagement Tracker
+│       │   │   │   ├───AvailabilityDB
+│       │   │   │   └───EventDB
+│       │   │   ├───GCM Store
+│       │   │   │   └───Encryption
+│       │   │   ├───GPUCache
+│       │   │   ├───Local Extension Settings
+│       │   │   │   └───ghbmnnjooekpmoecnnnilnnbdlolhkhi
+│       │   │   ├───Local Storage
+│       │   │   │   └───leveldb
+│       │   │   ├───optimization_guide_hint_cache_store
+│       │   │   ├───optimization_guide_model_and_features_store
+│       │   │   ├───Session Storage
+│       │   │   ├───shared_proto_db
+│       │   │   │   └───metadata
+│       │   │   ├───Site Characteristics Database
+│       │   │   ├───Storage
+│       │   │   │   └───ext
+│       │   │   │       ├───gfdkimpbcpahaombhbimeihdjnejgicl
+│       │   │   │       │   └───def
+│       │   │   │       │       ├───Code Cache
+│       │   │   │       │       │   ├───js
+│       │   │   │       │       │   │   └───index-dir
+│       │   │   │       │       │   └───wasm
+│       │   │   │       │       │       └───index-dir
+│       │   │   │       │       ├───GPUCache
+│       │   │   │       │       ├───Local Storage
+│       │   │   │       │       │   └───leveldb
+│       │   │   │       │       └───Session Storage
+│       │   │   │       └───nmmhkkegccagdldgiimedpiccmgmieda
+│       │   │   │           └───def
+│       │   │   │               ├───Code Cache
+│       │   │   │               │   ├───js
+│       │   │   │               │   │   └───index-dir
+│       │   │   │               │   └───wasm
+│       │   │   │               │       └───index-dir
+│       │   │   │               ├───GPUCache
+│       │   │   │               ├───Local Storage
+│       │   │   │               │   └───leveldb
+│       │   │   │               └───Session Storage
+│       │   │   └───Sync Data
+│       │   │       └───LevelDB
+│       │   ├───DesktopSharingHub
+│       │   │   └───20210813.1
+│       │   │       └───_metadata
+│       │   ├───FileTypePolicies
+│       │   │   └───43
+│       │   │       └───_metadata
+│       │   ├───Floc
+│       │   │   └───1.0.6
+│       │   │       └───_metadata
+│       │   ├───GrShaderCache
+│       │   │   └───GPUCache
+│       │   ├───hyphen-data
+│       │   │   └───96.0.4640.2
+│       │   │       └───_metadata
+│       │   ├───MEIPreload
+│       │   │   └───1.0.6.0
+│       │   │       └───_metadata
+│       │   ├───OnDeviceHeadSuggestModel
+│       │   │   └───20210907.395820866
+│       │   │       └───_metadata
+│       │   ├───OptimizationGuidePredictionModels
+│       │   │   └───OPTIMIZATION_TARGET_LANGUAGE_DETECTION_2108270046
+│       │   ├───OptimizationHints
+│       │   │   └───296
+│       │   │       └───_metadata
+│       │   ├───OriginTrials
+│       │   ├───pnacl
+│       │   │   └───0.57.44.2492
+│       │   │       ├───_metadata
+│       │   │       └───_platform_specific
+│       │   │           └───x86_64
+│       │   ├───RecoveryImproved
+│       │   ├───Safe Browsing
+│       │   ├───SafetyTips
+│       │   │   └───2694
+│       │   │       └───_metadata
+│       │   ├───ShaderCache
+│       │   │   └───GPUCache
+│       │   ├───SSLErrorAssistant
+│       │   │   └───7
+│       │   │       └───_metadata
+│       │   ├───Subresource Filter
+│       │   │   ├───Indexed Rules
+│       │   │   │   └───31
+│       │   │   │       └───9.29.4
+│       │   │   └───Unindexed Rules
+│       │   │       └───9.29.4
+│       │   │           └───_metadata
+│       │   ├───SwReporter
+│       │   │   └───93.269.200
+│       │   │       └───_metadata
+│       │   ├───ThirdPartyModuleList64
+│       │   │   └───2018.8.8.0
+│       │   │       └───_metadata
+│       │   ├───TrustTokenKeyCommitments
+│       │   │   └───2021.9.9.1
+│       │   │       └───_metadata
+│       │   ├───WidevineCdm
+│       │   └───ZxcvbnData
+│       │       └───1
+│       │           └───_metadata
+│       ├───images
+│       ├───logs
+│       ├───preview
+│       ├───screen
+│       └───videos
+├───Links
+├───Music
+│   └───Playlists
+├───OneDrive
+│   ├───Desktop
+│   ├───Documents
+│   │   ├───aws projects
+│   │   │   └───Python projects
+│   │   ├───AWS-EDUBRIDGE
+│   │   │   ├───Boto3
+│   │   │   │   └───.vscode
+│   │   │   └───MobaXterm_Portable_v23.1
+│   │   ├───Desktop
+│   │   ├───DOCUMENTS
+│   │   │   └───AWS
+│   │   ├───Git&Github
+│   │   ├───HTML
+│   │   │   ├───.vscode
+│   │   │   │   └───HTML
+│   │   │   ├───CSS
+│   │   │   └───javascript
+│   │   ├───portfolio
+│   │   ├───Resumes
+│   │   ├───WindowsPowerShell
+│   │   ├───Yaddala
+│   │   └───Zoom
+│   ├───Downloads
+│   ├───Music
+│   └───Pictures
+│       ├───My Pictures
+│       │   └───Family
+│       └───Screenshots
+├───Oracle
+│   ├───network
+│   │   └───admin
+│   └───oracle.oracledevtools
+├───Pictures
+│   ├───Camera Roll
+│   └───Screenshots
+├───Saved Games
+├───Searches
+├───sri
+├───srikanth
+│   ├───events
+│   ├───hello_world
+│   └───tests
+│       ├───integration
+│       └───unit
+├───Srikanth sam
+│   ├───events
+│   ├───hello_world
+│   └───tests
+│       ├───integration
+│       └───unit
+├───Tracing
+│   └───WPPMedia
+├───Videos
+│   └───Captures
+└───VirtualBox VMs
+    └───Ubuntu
+        └───Logs
+
+Build your application for deployment
+Package your function dependencies and organize your project code and folder structure to prepare for deployment.
+
+Here, we use the sam build command to prepare our application for deployment. The AWS SAM CLI creates a .aws-samdirectory and organizes our application dependencies and files there for deployment.
